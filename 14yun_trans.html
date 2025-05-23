@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportation Networks: Ancient and Modern</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .transition-container {
+            width: 100%;
+            height: 100vh;
+            background-image: url('yydimages/13bg.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(50deg, rgba(255, 255, 255, 0.4) 55%, rgba(255, 255, 255, 0.8) 70%);
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-box {
+            width: 40%;
+            max-width: 500px;
+            padding: 60px;
+            margin-right: 5%;
+            position: absolute;
+            right: 0;
+            top: 7%;
+            /* 更安全的正值，避免内容被裁切 */
+            height: 80%;
+            /* 调整高度以适应新位置 */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            /* 改为从顶部开始，确保副标题对齐 */
+        }
+
+        .map-box {
+            width: 57%;
+            height: 70%;
+            left: 5%;
+            top: 15%;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+            position: absolute;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+
+        .title-section {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .title-line {
+            width: 80px;
+            height: 3px;
+            background-color: #CA9542;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            color: #222;
+        }
+
+        .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #CA9542;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            /* Increased spacing here from default */
+        }
+
+        .content-text {
+            margin-top: 20px;
+            /* Added additional spacing above content text */
+        }
+
+        .content-text p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #333;
+            opacity: 0;
+        }
+
+        .content-text p:nth-child(1) {
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+
+        .content-text p:nth-child(2) {
+            animation: fadeIn 1s ease-out 0.6s forwards;
+        }
+
+        .content-text p:nth-child(3) {
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+
+        .highlight {
+            color: #CA9542;
+            font-weight: 400;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 70px;
+            display: flex;
+            align-items: center;
+            animation: fadeInOut 2s infinite 1.2s;
+            opacity: 0;
+        }
+
+        .scroll-indicator p {
+            margin-right: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9em;
+            color: #444;
+        }
+
+        .scroll-arrow {
+            width: 35px;
+            height: 35px;
+            border: 2px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInOut {
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                position: relative;
+            }
+
+            .content-box {
+                width: 50%;
+                max-width: 400px;
+                margin-left: 10%;
+                padding: 60px;
+            }
+
+            .vertical-divider {
+                left: 60%;
+                height: 50%;
+            }
+
+            .scroll-indicator {
+                margin-left: 60px;
+                left: 10%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                justify-content: flex-start;
+                overflow-y: auto;
+                height: auto;
+                padding: 0;
+            }
+
+            .content-box {
+                width: 100%;
+                margin: 0;
+                padding: 30px;
+                position: relative;
+                order: 2;
+                height: auto;
+            }
+
+            .map-box {
+                position: relative;
+                width: 90%;
+                height: 50vh;
+                margin: 20px auto;
+                order: 1;
+                top: 0;
+                left: 0;
+            }
+
+            .vertical-divider {
+                display: none;
+                /* Hide vertical divider on mobile */
+            }
+
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 25px;
+                /* Maintained spacing even in mobile view */
+            }
+
+            .overlay {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.75) 100%);
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            body {
+                height: auto;
+                overflow-y: auto;
+            }
+
+            .transition-container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .content-text {
+                margin-top: 15px;
+                /* Slightly reduced on mobile but still maintains spacing */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transition-container">
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <div class="subtitle">Evolution of China's Transportation Network</div>
+
+                <!-- <div class="content-text">
+                    <p>
+                        For centuries, China's <span class="highlight">Grand Canal and ancient trade routes</span>
+                        formed a network connecting major cities, allowing goods and ideas to flow between regions.
+                    </p>
+                    <p>
+                        Today's <span class="highlight">high-speed rail and expressway networks</span> mirror these
+                        ancient paths, following similar geographical contours yet expanding accessibility to previously
+                        isolated regions.
+                    </p>
+                    <p>
+                        While ancient networks were constrained by terrain and waterways, modern infrastructure has
+                        overcome these limitations through <span class="highlight">tunnels, bridges, and advanced
+                            engineering</span>, creating a denser and more efficient transportation web.
+                    </p>
+                </div> -->
+                <div class="content-text">
+                    <p>
+                        China's <span class="highlight">Grand Canal and ancient trade routes</span> formed a network
+                        connecting major cities and enabling trade between regions.
+                    </p>
+                    <p>
+                        Today's <span class="highlight">high-speed rail and expressway networks</span> follow similar
+                        geographical paths while vastly expanding accessibility and reducing travel time across the nation.
+                    </p>
+                    <p>
+                        Modern <span class="highlight">tunnels, bridges, and advanced engineering</span> have created a
+                        denser and more efficient transportation web that continues to reshape regional integration and economic development.
+                    </p>
+                </div>
+                <div class="scroll-indicator" >
+                    <p>Scroll down</p>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+
+            <div class="map-box">
+                <iframe class="map-iframe" src="yun_tran.html" title="Transportation Networks Comparison"></iframe>
+            </div>
+
+            <!-- Vertical divider between map and text -->
+            <div class="vertical-divider"></div>
+        </div>
+    </div>
+    
+    <script>        
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加滚动监听，让时间线元素逐步出现
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            function checkIfInView() {
+                timelineItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                    
+                    if (rect.top <= windowHeight * 0.8) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkIfInView();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkIfInView);
+            
+            // 为滚动指示器添加点击事件
+            var scrollIndicator = document.querySelector('.scroll-indicator');
+            var scrollArrow = document.querySelector('.scroll-arrow');
+            
+            
+            // 如果找到了滚动箭头，单独为其添加点击事件
+            if (scrollArrow) {
+                scrollArrow.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // 尝试调用父窗口的 fullPage.js 方法
+                    if (window.parent && window.parent.$.fn && window.parent.$.fn.fullpage) {
+                        window.parent.$.fn.fullpage.moveTo('TourismPage');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

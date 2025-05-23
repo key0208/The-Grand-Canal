@@ -1,0 +1,101 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "City": "Beijing",     
+        "title": "Center of Court Literature and Book Exchange",
+        "description": "As the imperial capital, Beijing was a center of court literature and exam texts. Works like Ji Xiaolan’s Notes from the Thatched Studio blended northern ghost tales with canal-town folklore. The Grand Canal brought books from Jiangnan, enriching the city’s literary life."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.41, 39.90]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "City": "Hangzhou",
+        "title": "Southern Song Reflections",
+        "description": "Hangzhou flourished as a cultural center of the Southern Song Dynasty, with migrant poetry reaching new heights. Writers like Zhou Mi nostalgically preserved memories of life in Bianjing, influencing later Ming and Qing literary themes of remembrance."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 120.17, 30.22 ]
+        }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "City": "Suzhou",
+        "title": "Storytelling and Private Publishing Hub",
+        "description": "At canal ports, performers turned novels into Tanci ballads, while Suzhou’s private presses—like the Cheng-Gao Dream of the Red Chamber—helped spread classical Chinese literature."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.59, 31.30]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "City": "Yangzhou",
+        "title": "Fusion of Elite and Folk Literature",
+        "description": "Yangzhou evolved into a literary and theatrical hub where elite and folk opera traditions coexisted and cross-pollinated. Wealthy salt merchants supported the city's vibrant performance scene, fueling a unique fusion of refined and popular literary expression."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 119.42, 32.37 ]
+      }
+    },    
+      {
+      "type": "Feature",
+      "properties": {
+        "City": "Linqing",
+        "title": "Marketplace Fiction and Vernacular Language",
+        "description": "Linqing is widely recognized as the model for Qinghe County in The Plum in the Golden Vase, which vividly portrays canal merchants' lavish lives. The novel draws heavily from marketplace culture and employs rich vernacular language rooted in canal town experiences."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.70, 36.68 ]
+      }
+    },      
+      {
+      "type": "Feature",
+      "properties": {
+        "City": "Nanjing",
+        "title": "Literary Criticism and Examination Culture",
+        "description": "Nanjing, a Jiangnan literary center, hosted Tongcheng scholars like Yao Nai at Zhongshan Academy. Exam essays from its halls spread via the Grand Canal, shaping civil service writing nationwide."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 118.78, 32.06 ]
+      }
+    },
+      {
+      "type": "Feature",
+      "properties": {
+        "City": "Tianjin",
+        "title": "Quyi Folk Arts and Canal Humor",
+        "description": "Tianjin’s crosstalk grew from canal dock acts, mixing northern humor with southern tales. Kuaiban echoed workers’ chants, telling stories of grain-shipping heroes."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 117.20, 39.13 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "City": "Huaian",
+        "title": "Oral Tales and Canal Legends",
+        "description": "Huaian's canal workers preserved vibrant oral traditions later recorded in works like Chronicle of Canal Boats. These tales inspired literary classics such as Pu Songling's Strange Tales and influenced water monster legends in Journey to the West."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.15, 33.50]
+      }
+    }
+  ]
+}

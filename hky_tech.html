@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grand Canal Technology Dissemination - Interactive map showing technology exchange along China's Grand Canal">
+    <title>Grand Canal Technology Dissemination</title>
+    <!-- Maptiler GL JS CSS -->
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.0.1/maptiler-sdk.css" rel="stylesheet">
+    <!-- Import external CSS file -->
+    <link href="hky_styles.css" rel="stylesheet">
+    
+    <!-- 添加箭头的CSS样式 -->
+    <style>
+        /* 滚动指示器样式 - 匹配其他页面的样式 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 28%; /* 居中放置 */
+            transform: translateX(-50%); /* 确保完全居中 */
+            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+            z-index: 10; /* 确保在其他元素之上 */
+            opacity: 0;
+            animation: fadeInOut 2s infinite 1.2s;
+        }
+        
+        .scroll-arrow {
+        color: #666; /* 灰色箭头 */
+        font-size: 2em; /* 增大箭头尺寸 */
+        transition: all 0.3s ease; /* 添加悬停效果 */
+        line-height: 1;
+    }
+    
+    .scroll-arrow:hover {
+        color: #444;
+        transform: scale(1.2); /* 悬停时略微放大 */
+    }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 新添加的内容容器，包含技术浏览器和地图 -->
+    <div class="content-container">
+        <!-- 技术浏览器容器 -->
+        <div id="tech-explorer" class="tech-explorer-container"></div>
+        
+        <!-- 原有的地图容器 -->
+        <div id="map-container">
+            <div id="loading-overlay">
+                <div class="spinner"></div>
+            </div>
+            <div id="map"></div>
+            <div class="map-overlay"></div>
+            
+            <!-- 添加滚动指示器 -->
+            <div class="scroll-indicator">
+                <div class="scroll-arrow">⌄</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Google fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+ 
+    <!-- Maptiler GL JS -->
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.0.1/maptiler-sdk.umd.min.js"></script>
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- Turf.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+    <!-- 新添加的技术浏览器JS -->
+    <script src="hky_tech-explorer.js"></script>
+    <link href="hky_tech-explorer.css" rel="stylesheet">
+    <!-- Custom JavaScript -->
+    <script src="hky_script.js"></script>
+    
+    <!-- 添加箭头点击功能的JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取滚动指示器元素
+            var scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            // 为滚动指示器添加点击事件
+            if (scrollIndicator) {
+                scrollIndicator.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation(); // 阻止事件冒泡
+                    // 尝试调用父窗口的 fullPage.js 方法
+                    if (window.parent && window.parent.$.fn && window.parent.$.fn.fullpage) {
+                        window.parent.$.fn.fullpage.moveSectionDown();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

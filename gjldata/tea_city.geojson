@@ -1,0 +1,113 @@
+{
+  "type": "FeatureCollection",
+  "name": "zaju_city",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": [
+    { 
+      "type": "Feature", 
+      "properties": { 
+        "City": "Hangzhou", 
+        "Latitude": 30.22, 
+        "Longitude": 120.17, 
+        "description": "West Lake Longjing tea",
+        "iconImage": "gjlimages/city_icons/diet_hangzhou2.png",           
+ "character": "Cultural cradle of southern tea",
+            "resource": "Longjing tea / West Lake landscape",
+            "contribution": "Established literati tea rituals and aesthetic values",
+            "people": "Lu Yu"
+      }, 
+      "geometry": { 
+        "type": "Point", 
+        "coordinates": [ 120.17, 30.22 ]
+      } 
+    }, 
+{ 
+      "type": "Feature", 
+      "properties": { 
+        "City": "Suzhou", 
+        "Latitude": 31.35, 
+        "Longitude": 120.53, 
+        "description": "Biluochun green tea",
+        "iconImage": "gjlimages/city_icons/diet_suzhou2.png",
+            "character": "Refined tea culture center",
+            "resource": "Biluochun tea / Gentry gardens",
+            "contribution": "Spread delicate tea-making culture and aesthetic appreciation",
+            "people": "Suzhou literati circles"
+      }, 
+      "geometry": { 
+        "type": "Point", 
+        "coordinates": [ 120.53, 31.35]
+      } 
+    },
+{ 
+      "type": "Feature", 
+      "properties": { 
+        "City": "Linqing", 
+        "Latitude": 36.68, 
+        "Longitude": 115.7, 
+        "description": "“big-bowl tea,”, for just one coin, which laborers could drink as much as they liked—quick, affordable, and perfect.",
+        "iconImage": "gjlimages/city_icons/diet_linqing2.png",
+            "character": "Grassroots tea culture node",
+            "resource": "Canal rest stops / 'Big-bowl tea' stalls",
+            "contribution": "Popularized quick and inclusive tea consumption",
+            "people": "Local canal tea vendors"
+      }, 
+      "geometry": { 
+        "type": "Point", 
+        "coordinates": [ 115.70, 36.68]
+      } 
+    },{ 
+      "type": "Feature", 
+      "properties": { 
+        "City": "Tianjin", 
+        "Latitude": 39.13, 
+        "Longitude": 117.2, 
+        "description": "“Chatang”, a hot millet-flour tea",
+        "iconImage": "gjlimages/city_icons/diet_tianjin2.png",
+            "character": "Local adaptation node",
+            "resource": "Northern grains / Street vendor culture",
+            "contribution": "Created grain-based tea suited for northern lifestyles",
+            "people": "Chatang street vendors"
+      }, 
+      "geometry": { 
+        "type": "Point", 
+        "coordinates": [ 117.20, 39.13]
+      } 
+    },{ 
+      "type": "Feature", 
+      "properties": { 
+        "City": "Beijing", 
+        "Latitude": 39.9, 
+        "Longitude": 116.41, 
+        "description": "Jasmine tea, blending floral aroma with northern habits",
+        "iconImage": "gjlimages/city_icons/diet_beijing2.png",
+           "character": "Northern tea culture peak",
+            "resource": "Jasmine tea production / Imperial court demand",
+            "contribution": "Standardized jasmine tea as a northern staple",
+            "people": "Qing-era tea artisans"
+      }, 
+      "geometry": { 
+        "type": "Point", 
+        "coordinates": [116.41, 39.90]
+      } 
+    },
+{ 
+      "type": "Feature", 
+      "properties": { 
+        "City": "Yangzhou", 
+        "Latitude": 32.37, 
+        "Longitude": 119.42, 
+        "description": "“Kui Longzhu”, a fragrant blend of Longjing and Julan (jasmine)",
+        "iconImage": "gjlimages/city_icons/diet_yangzhou2.png",
+            "character": "Blending innovation center",
+            "resource": "Tea blending craftsmanship / Salt merchant patronage",
+            "contribution": "Created new tea types combining southern and floral flavors",
+            "people": "Tea artisans in salt merchant circles"
+      }, 
+      "geometry": { 
+        "type": "Point", 
+        "coordinates": [ 119.42, 32.37 ] 
+      } 
+    }
+  ]
+}

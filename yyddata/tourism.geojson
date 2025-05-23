@@ -1,0 +1,1402 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Zhutangkou Flood Control Works",
+                "city": "邢台市",
+                "description": "Important hydraulic structure from Ming and Qing dynasties, built to prevent flood impacts on the South Canal. Serves as a key junction project between the South Canal and Wei Canal, showcasing ancient water conservancy technology."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    115.6697,
+                    37.0735
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "South Canal (Hebei Section)",
+                "city": "沧州市",
+                "description": "Important component of the Grand Canal, spanning about 300km through southern Hebei. Historically served as a lifeline for north-south material exchange, preserving numerous ancient hydraulic facilities and wharf ruins."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.3953,
+                    38.0362
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Jiedi Flood Diversion Facility",
+                "city": "沧州市",
+                "description": "Important flood control project built during Qing Dynasty, demonstrating ancient hydraulic engineers' wisdom in ensuring canal safety through water diversion."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.8832,
+                    38.3039
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Lianzhen Xiejia Dam",
+                "city": "沧州市",
+                "description": "Qing Dynasty hydraulic project for water flow and level control, ensuring safe navigation. The existing structure demonstrates traditional dam construction techniques."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5422,
+                    37.8880
+                ]
+            }
+        },
+        
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "North Canal (Hebei Section)",
+                "city": "廊坊市",
+                "description": "Important waterway connecting Beijing and Tianjin, serving as the main artery for grain transport during Ming and Qing dynasties. Preserves numerous ancient wharfs and hydraulic facilities along its banks."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.0066,
+                    39.7613
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hongmiao Village Jinmen Sluice",
+                "city": "廊坊市",
+                "description": "Water sluice built during Ming Dynasty for regulating canal water levels and ensuring smooth grain transport. Represents an important hydraulic control point on the North Canal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.7046,
+                    39.5382
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "South Canal (Hebei Section)",
+                "city": "衡水市",
+                "description": "Important section of South Canal in southern Hebei, historically serving as a crucial water transport channel connecting Shandong and Hebei. Preserves multiple ancient embankments and hydraulic facilities."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    115.7132,
+                    37.6231
+                ]
+            }
+        },
+        
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Huajiakou Rammed Earth Flood Control Works",
+                "city": "衡水市",
+                "description": "Flood control project built during Qing Dynasty using traditional rammed earth techniques. Served as a masterpiece of ancient water control technology and played a vital role in South Canal's safe operation."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.2703,
+                    37.6923
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Zhengkou Diversion Dam",
+                "city": "衡水市",
+                "description": "Qing Dynasty hydraulic facility for water level regulation and irrigation diversion. Demonstrates the multifunctionality of ancient water conservancy projects with significant historical and technological value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    115.8234,
+                    37.3467
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Gaoliang Sluice",
+                "city": "北京",
+                "description": "Important hydraulic hub initially built in Ming Dynasty, serving as a key node for grain transport. Witnesses the historical changes of Beijing's urban water system."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.2844,
+                    39.9645
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Black Dragon Pool and Dragon King Temple",
+                "city": "北京",
+                "description": "Ancient spring and worship site located west of Kunming Lake. Served as an important water source in western Beijing suburbs, combining water conservancy with folk beliefs."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.1331,
+                    40.0556
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Guangyuan Sluice",
+                "city": "北京",
+                "description": "Water sluice built during Qing Dynasty, serving as an important control point for Beijing's urban water system. Played crucial roles in flood prevention and water supply by regulating Tonghui River's water level."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.3635,
+                    39.9403
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Shichahai",
+                "city": "北京",
+                "description": "Artificial lake group originating from Yuan Dynasty, forming an important component of Dadu (Yuan capital). Served as a vital node in Beijing's urban water system, historically connected to Grand Canal waterways."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.3838,
+                    39.9341
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Yuhe Ancient Waterway",
+                "city": "北京",
+                "description": "Important urban water channel originating from Yuan Dynasty, connecting Tonghui River with inner city water system. Historically served as a crucial passage for material transportation."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.4018,
+                    39.9075
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Upper Chengqing Sluice (including Wanning Bridge)",
+                "city": "北京",
+                "description": "Important hydraulic facility from Yuan-Ming-Qing periods for regulating Yuhe water levels. Wanning Bridge served as a crucial transportation facility above it, combining water conservancy with urban traffic."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.4175,
+                    39.9064
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Middle Chengqing Sluice (including Dongbuya Bridge)",
+                "city": "北京",
+                "description": "Combination of water sluice and bridge from Yuan-Ming-Qing periods. The specially designed Dongbuya Bridge allowed boats to pass without lowering their sails, reflecting coordination between water transport and urban construction."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.4196,
+                    39.9021
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Nanxincang",
+                "city": "北京",
+                "description": "Granary initially built in Ming Dynasty, serving as important grain storage facility during Ming-Qing periods. Closely related to Grand Canal's grain transport system, witnessing its historical development."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.3911,
+                    39.8972
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Baifu Spring Site",
+                "city": "北京",
+                "description": "Ancient important spring serving as key water source in northern Beijing. Historically connected to North Canal water system, significant for regional water resource utilization."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.2347,
+                    40.2183
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Qingfeng Sluice",
+                "city": "北京",
+                "description": "Water sluice built during Qing Dynasty for regulating Tonghui River's water level. Played key roles in ensuring water transport and supply in eastern Beijing, reflecting ancient hydraulic engineering techniques."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.4639,
+                    39.9214
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Pingjin Sluice",
+                "city": "北京",
+                "description": "Important Qing Dynasty water sluice on Tonghui River, regulating canal water levels and ensuring smooth grain transport. Served as key project connecting Beijing and Tianjin via waterway."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5047,
+                    39.9217
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Yongtong Bridge and Stone Road Stele",
+                "city": "北京",
+                "description": "Ancient bridge initially built in Jin Dynasty, spanning Tonghui River. The stone stele records ancient road and water system information, holding significant historical documentary value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.6586,
+                    39.9036
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Imperial Tongzhou Stone Road Stele",
+                "city": "北京",
+                "description": "Stone stele established during Qianlong reign of Qing Dynasty, recording road and water system information in Tongzhou area. Valuable physical material for studying Grand Canal's Tongzhou section history."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.6591,
+                    39.9038
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Zhangjiawan City Wall and Tongyun Bridge",
+                "city": "北京",
+                "description": "Ruins of important canal wharf town from Ming-Qing periods. Tongyun Bridge served as crucial transportation facility, providing important physical materials for studying development of canal-side market towns."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.7978,
+                    39.7689
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Tongzhou Ranlight Pagoda",
+                "city": "北京",
+                "description": "Ancient pagoda initially built in Liao Dynasty, located in Tongzhou ancient city. Served as important landmark and navigation marker along the canal, holding significant historical and artistic value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.6597,
+                    39.9073
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Grand Canal Tianjin Section",
+                "city": "天津",
+                "description": "Important section of Grand Canal in Tianjin urban area, historically serving as convergence point between Haihe River and Grand Canal. Formed important foundation for Tianjin's urban development, preserving numerous historical wharfs and hydraulic facilities along its banks."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.2034,
+                    39.0845
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Shisicang Ruins",
+                "city": "天津",
+                "description": "Grain storage ruins from Ming-Qing periods, serving as important grain reserve facilities along Grand Canal. Echoed with Beijing's Nanxincang, witnessing completeness of canal's grain transport system."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.0578,
+                    39.3792
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Huitong River Nanwang Hub Rencheng Section",
+                "city": "济宁市",
+                "description": "Ancient important canal hydraulic hub project for regulating water levels and ensuring smooth grain transport. Represents typical hydraulic engineering technology from Ming-Qing periods."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5783,
+                    35.4152
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Taihe Bridge",
+                "city": "济宁市",
+                "description": "Important bridge spanning the canal during Ming-Qing periods, connecting both banks. Served as crucial transportation facility along Jining's canal section, embodying ancient bridge architectural art."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5871,
+                    35.4099
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Caojing Bridge",
+                "city": "济宁市",
+                "description": "Canal bridge built during Qing Dynasty, forming important component of grain transport system. Its name reflects close relationship with grain transport, holding significant historical value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5906,
+                    35.3981
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Jining Huanbi Spring Site",
+                "city": "济宁市",
+                "description": "Historically significant spring serving as important water source in Jining area. Connected to canal water system, holding important hydrogeological and cultural value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5782,
+                    35.4103
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Tongji Sluice",
+                "city": "济宁市",
+                "description": "Important water sluice from Ming-Qing periods for regulating canal water levels and ensuring smooth grain transport. Served as key component of Jining section's canal hydraulic system."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5893,
+                    35.4020
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Jining Canal Governor's Office Ruins",
+                "city": "济宁市",
+                "description": "Site of canal management agency established during Qing Dynasty, forming important component of canal management system. Witnesses Qing government's systematic governance history of the canal."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5867,
+                    35.4097
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Shili Sluice",
+                "city": "济宁市",
+                "description": "Important water sluice from Ming-Qing periods on Xiaowen River, serving as key facility for regulating canal water system. Named for its distance (10 li), holding significant historical and hydraulic value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5217,
+                    35.6681
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Liulin Sluice",
+                "city": "济宁市",
+                "description": "Water sluice from Ming-Qing periods at convergence of Xiaowen River and canal, regulating water system levels. Forms important component of canal water system."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.5763,
+                    35.5132
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Canal Ancient Towpath",
+                "city": "苏州市",
+                "description": "Man-powered towing path along ancient canal banks, forming important component of canal transportation system. Witnesses human-powered traction history in ancient water transport, holding significant transportation history research value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.6486,
+                    31.1657
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Sanli Bridge",
+                "city": "苏州市",
+                "description": "Ancient stone bridge spanning the canal, connecting both banks. Served as important transportation facility along Suzhou's canal section, embodying architectural characteristics of Jiangnan water towns."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.6273,
+                    31.3176
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Anmin Bridge",
+                "city": "苏州市",
+                "description": "Ancient stone arch bridge spanning the canal, serving as important transportation facility along Suzhou's canal section. Features exquisite structure with significant architectural art and historical value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.6329,
+                    31.3055
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Ande Bridge",
+                "city": "苏州市",
+                "description": "Ancient stone arch bridge spanning the canal, connecting both banks. Served as important transportation facility along Suzhou's canal section, demonstrating superb craftsmanship of Jiangnan bridge architecture."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.6198,
+                    31.3214
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Huju Bridge",
+                "city": "镇江市",
+                "description": "Ancient bridge initially built in Ming Dynasty, spanning old canal. Important transportation facility in Zhenjiang, named for its resemblance to a crouching tiger, holding significant historical and artistic value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.4572,
+                    32.2025
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Xinhe Street Historic Block",
+                "city": "镇江市",
+                "description": "Ancient commercial street built along the canal, witnessing canal's economic prosperity. Preserves numerous Ming-Qing buildings with important historical and architectural value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.4438,
+                    32.2049
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "River Convergence Point (Jianbikou)",
+                "city": "镇江市",
+                "description": "Convergence point of Yangtze River and Grand Canal, serving as important connection point between north-south water systems. Historically busy water transport hub with significant hydrogeographical and historical value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.3893,
+                    32.2244
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "River Convergence Point (Dantukou)",
+                "city": "镇江市",
+                "description": "Another convergence point of Yangtze River and canal, serving as important water transport node. Historically busy with boat traffic, providing important witness for studying water transport history."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.4339,
+                    32.1688
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "River Convergence Point (Xiaojingkou)",
+                "city": "镇江市",
+                "description": "Convergence point of Yangtze River and canal, serving as important water transport hub. Historically significant military and commercial location with important historical-geographical value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.4464,
+                    32.2101
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Xijindu Ancient Street",
+                "city": "镇江市",
+                "description": "Ancient wharf block developed by advantage of Yangtze-Grand Canal convergence. Preserves numerous historical buildings, providing important case for studying canal's interaction with Yangtze water system."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.4369,
+                    32.2033
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hexia Ancient Town",
+                "city": "淮安市",
+                "description": "Ancient town developed along the canal, historically serving as important commercial distribution center. Preserves numerous Ming-Qing buildings, providing important case for studying canal's economic impact."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.0286,
+                    33.5056
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Ancient Canal Stone Embankment",
+                "city": "淮安市",
+                "description": "Stone embankment built in ancient times to prevent bank erosion and ensure stable navigation channel. Provides important physical materials for studying ancient hydraulic engineering."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.1419,
+                    33.5083
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Huaian Customs House Ruins",
+                "city": "淮安市",
+                "description": "Ruins of ancient tax agency set up at canal strategic points. Provides important physical materials for studying ancient water transport management and taxation systems."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.1462,
+                    33.5006
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Pei Yinsen's Former Residence",
+                "city": "淮安市",
+                "description": "Former residence of famous modern industrialist and canal transport supervisor Pei Yinsen. Closely related to Grand Canal transport management, providing important historical witness to late Qing canal administration."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.1526,
+                    33.5121
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Banzha Ruins",
+                "city": "淮安市",
+                "description": "Ancient wooden sluice structure ruins for regulating canal water levels. Demonstrates traditional wooden hydraulic engineering technology with significant scientific and historical value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    119.1384,
+                    33.5073
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Jiangnan Canal Jiaxing-Hangzhou Section",
+                "city": "杭州市",
+                "description": "Important component of Jiangnan Canal, connecting Jiaxing and Hangzhou. Historically served as crucial grain transport channel, preserving numerous ancient bridges, wharfs and hydraulic facilities along its course."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.2090,
+                    30.4535
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Zhedong Canal Hangzhou Xiaoshan-Shaoxing Section",
+                "city": "杭州市",
+                "description": "Important component of Zhedong Canal, connecting Hangzhou's Xiaoshan and Shaoxing. With long history as ancient water transport channel, preserving numerous historical relics along its course."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.3462,
+                    30.1612
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Tongyi Gong Cotton Mill Site and Gao Family Garden",
+                "city": "杭州市",
+                "description": "Modern industrial site along the canal, witnessing industry development supported by canal. Holds important industrial heritage value and historical research significance."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1510,
+                    30.3236
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Foreign Customs Office Site",
+                "city": "杭州市",
+                "description": "Customs agency site established in late Qing, located along the canal. Reflects Hangzhou's foreign trade history, closely related to canal's international commerce."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1534,
+                    30.3178
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Fengshan Water Gate Site",
+                "city": "杭州市",
+                "description": "Ancient city wall water gate site, serving as key facility for canal passing through Hangzhou's city wall. Demonstrates combination of ancient water transport and urban planning with significant historical value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1604,
+                    30.2741
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hangzhou Fuyi Granary",
+                "city": "杭州市",
+                "description": "Granary built in Song Dynasty along the canal, serving as important storage facility for water-transported grain. Demonstrates canal's key role in grain storage and transport."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1623,
+                    30.2798
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Gongchen Bridge",
+                "city": "杭州市",
+                "description": "Famous stone arch bridge initially built in Yuan Dynasty, serving as landmark structure of Grand Canal's Hangzhou section. Outstanding representative of ancient Chinese bridge architecture with extremely high historical, artistic and scientific value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1551,
+                    30.2741
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hangzhou Canal Ancient Bridge - Xiangfu Bridge",
+                "city": "杭州市",
+                "description": "Ancient stone arch bridge spanning the canal, connecting both banks. Important transportation facility along Hangzhou's canal section with relatively high historical and artistic value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1532,
+                    30.2878
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hangzhou Canal Ancient Bridge - Huanxi Yongning Bridge",
+                "city": "杭州市",
+                "description": "Ancient stone arch bridge spanning the canal, serving as important transportation facility along Hangzhou's canal section. Demonstrates superb craftsmanship of Jiangnan water town bridge architecture."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.1562,
+                    30.2716
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hangzhou Canal Ancient Bridge - Guifang Bridge",
+                "city": "杭州市",
+                "description": "Ancient stone arch bridge spanning the canal, serving as important transportation facility along Hangzhou's Linping section. Demonstrates ancient bridge architectural art with significant historical value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.3016,
+                    30.4195
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Guangji Bridge",
+                "city": "杭州市",
+                "description": "Ancient stone arch bridge spanning the canal, connecting both banks. Important transportation facility along Hangzhou's Linping section, demonstrating superb ancient bridge engineering techniques."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.3008,
+                    30.4209
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Xixing Transit Wharf",
+                "city": "杭州市",
+                "description": "Ancient important canal wharf serving as transfer point for goods loading/unloading. Valuable for studying ancient water transport organization, witnessing canal's commercial development."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.2118,
+                    30.2093
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Zhedong Canal Ancient Towpath",
+                "city": "杭州市",
+                "description": "Man-powered towing path along ancient canal banks, forming important component of Zhedong Canal transportation system. Witnesses human-powered support system in ancient water transport with significant transportation history research value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.2851,
+                    30.1845
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Zhedong Canal Shangyu-Yuyao Section",
+                "city": "宁波市",
+                "description": "Important component of Zhedong Canal, connecting Shangyu and Yuyao. With long history as ancient water transport channel, preserving numerous historical relics along its course."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.0167,
+                    30.0403
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Zhedong Canal Ningbo Section",
+                "city": "宁波市",
+                "description": "Zhedong Canal's section in Ningbo with long history as ancient water transport artery. Significantly influenced Ningbo's urban development, preserving numerous historical relics along its course."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5436,
+                    29.8756
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Ningbo Sanjiangkou",
+                "city": "宁波市",
+                "description": "Convergence point of Yuyao River, Fenghua River and Yao River, serving as core node of Ningbo's water system. Historically important water transport hub with decisive influence on Ningbo's urban development."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5523,
+                    29.8737
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Yao River Hydraulic Navigation Facility - Yasai Weir Site",
+                "city": "宁波市",
+                "description": "Ancient hydraulic facility site for regulating Yao River water levels and ensuring smooth navigation. Demonstrates ancient hydraulic engineering technology with significant scientific value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5476,
+                    29.8806
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Yao River Hydraulic Navigation Facility - Xiaoxiba Site",
+                "city": "宁波市",
+                "description": "Ancient hydraulic facility site for regulating Yao River water levels and ensuring smooth navigation. Forms important component of Ningbo's canal water system."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5463,
+                    29.8812
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Yao River Hydraulic Navigation Facility - Daxiba Site",
+                "city": "宁波市",
+                "description": "Ancient hydraulic facility site for regulating Yao River water levels and ensuring smooth navigation. Together with Xiaoxiba forms regulation system of Ningbo's canal water system."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5436,
+                    29.8825
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Water Gauge Stele",
+                "city": "宁波市",
+                "description": "Stone stele recording water level standards, serving as important tool for ancient water management. Valuable for studying Ningbo's water system management history."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.5498,
+                    29.8763
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Jiangnan Canal Jiaxing-Hangzhou Section",
+                "city": "嘉兴市",
+                "description": "Important component of Jiangnan Canal, connecting Jiaxing and Hangzhou. Historically served as crucial grain transport channel, preserving numerous ancient bridges, wharfs and hydraulic facilities along its course."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.7539,
+                    30.7503
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Chang'an Sluice",
+                "city": "嘉兴市",
+                "description": "Ancient water sluice for regulating canal water levels and ensuring smooth navigation. Forms important component of Jiangnan Canal's hydraulic system, reflecting ancient hydraulic engineering technology."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.6815,
+                    30.5103
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Changhong Bridge",
+                "city": "嘉兴市",
+                "description": "Ancient stone arch bridge spanning the canal, connecting both banks. Important transportation facility along Jiaxing's canal section, demonstrating superb craftsmanship of Jiangnan bridge architecture."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.7107,
+                    30.7682
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Jiangnan Canal Nanxun Section",
+                "city": "湖州市",
+                "description": "Jiangnan Canal's section in Nanxun with long history as ancient water transport channel. Significantly influenced Nanxun ancient town's formation and development."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.4143,
+                    30.8503
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Silk Guild Hall and Silk Merchant Buildings",
+                "city": "湖州市",
+                "description": "Silk commercial facilities developed through canal water transport. Important case for studying canal's promotion of commercial development, holding significant historical and architectural value."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.4136,
+                    30.8508
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Zhedong Canal Hangzhou Xiaoshan-Shaoxing Section",
+                "city": "绍兴市",
+                "description": "Important component of Zhedong Canal, connecting Hangzhou's Xiaoshan and Shaoxing. With long history as ancient water transport channel, preserving numerous historical relics along its course."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.5801,
+                    30.0375
+                ]
+            }
+        },
+        {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Zhedong Canal Shangyu-Yuyao Section",
+                        "city": "绍兴市",
+                        "description": "Important component of Zhedong Canal connecting Shangyu and Yuyao. With a long history as an ancient water transport route, preserving numerous historical relics along its course."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            120.8634,
+                            30.0158
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Zhedong Canal Ancient Towpath",
+                        "city": "绍兴市",
+                        "description": "Man-powered towing path along the ancient canal, forming a crucial part of Zhedong Canal's transportation system. Witnesses the human-powered support system of ancient water transport with significant transportation history research value."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            120.5762,
+                            30.0821
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Cao'e River Embankment Ruins",
+                        "city": "绍兴市",
+                        "description": "Ancient hydraulic facility ruins for regulating Cao'e River water levels and ensuring smooth navigation. An important component of Zhedong Canal water system with significant hydraulic history research value."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            120.8736,
+                            29.9974
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Yuyu Canal Hydraulic Navigation Facilities",
+                        "city": "绍兴市",
+                        "description": "Hydraulic facilities along the canal connecting Shangyu and Yuyao, regulating water levels and ensuring smooth navigation. An important part of Zhedong Canal water system."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            120.8681,
+                            30.0058
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Grand Canal Zhengzhou Section",
+                        "city": "郑州市",
+                        "description": "The Zhengzhou section of Grand Canal, an important component of Sui-Tang Grand Canal connecting Yellow River and Huai River water systems. Holds significant value for transportation and hydraulic history research."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            113.6462,
+                            34.7534
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Huiluo Granary",
+                        "city": "洛阳市",
+                        "description": "Ancient granary ruins, an important component of Sui-Tang Grand Canal's grain transport system. Provides crucial physical evidence for studying ancient grain storage and transportation systems."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            112.4763,
+                            34.6831
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Hanjia Granary",
+                        "city": "洛阳市",
+                        "description": "Sui-Tang period granary ruins, an important part of Grand Canal's grain transport system. Highly valuable for researching ancient grain storage and transportation systems."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            112.4578,
+                            34.6729
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Grand Canal Huaxian Section",
+                        "city": "安阳市",
+                        "description": "The Huaxian section of Grand Canal, an important component of Sui-Tang Grand Canal connecting Yellow River and Huai River water systems. Significant for transportation and hydraulic history research."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            114.5193,
+                            35.5743
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Grand Canal Junxian Section",
+                        "city": "鹤壁市",
+                        "description": "The Junxian section of Grand Canal, an important component of Sui-Tang Grand Canal connecting Yellow River and Huai River water systems. Significant for transportation and hydraulic history research."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            114.5502,
+                            35.6731
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Grand Canal Fangcheng Weir Ruins",
+                        "city": "鹤壁市",
+                        "description": "Ancient hydraulic facility ruins for regulating canal water levels and ensuring smooth navigation. An important component of Sui-Tang Grand Canal's hydraulic system with significant hydraulic history research value."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            114.3582,
+                            35.8972
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Yunxi Bridge",
+                        "city": "鹤壁市",
+                        "description": "Ancient stone arch bridge spanning the canal, connecting both banks. An important transportation facility demonstrating exquisite ancient bridge construction techniques."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            114.2962,
+                            35.9486
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Liyang Granary Ruins",
+                        "city": "鹤壁市",
+                        "description": "Important Sui-Tang period granary ruins, a key component of Grand Canal's grain transport system. Highly valuable for researching ancient grain storage and transportation systems."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            114.2914,
+                            35.9503
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Grand Canal Xinxiang Section",
+                        "city": "新乡市",
+                        "description": "The Xinxiang section of Grand Canal, an important component of Sui-Tang Grand Canal connecting Yellow River and Huai River water systems. Significant for transportation and hydraulic history research."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            113.8831,
+                            35.3023
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Grand Canal Shangqiu South Gate Wharf Ruins",
+                        "city": "商丘市",
+                        "description": "Ancient canal wharf ruins, important water transport facility in Shangqiu region. Valuable for researching the canal's impact on Shangqiu's urban development."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            115.6503,
+                            34.4142
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Grand Canal Shangqiu Section",
+                        "city": "商丘市",
+                        "description": "The Shangqiu section of Grand Canal, an important component of Sui-Tang Grand Canal connecting Yellow River and Huai River water systems. Significant for transportation and hydraulic history research."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            115.6581,
+                            34.4203
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Suixi Baishan Village Ancient Canal Course",
+                        "city": "淮北市",
+                        "description": "Ancient canal remains, an important component of Sui-Tang Grand Canal's southern section. Valuable for researching canal historical changes."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            116.7963,
+                            33.9142
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Ancient Canal Course Sixian Section",
+                        "city": "宿州市",
+                        "description": "Ancient canal remains, an important component of Sui-Tang Grand Canal's southern section. Valuable for researching canal historical changes."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            117.9103,
+                            33.4829
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Huashigang Ruins",
+                        "city": "宿州市",
+                        "description": "Specialized wharf ruins from Song Dynasty for transporting exotic stones and plants via canal. Reflects the canal's role in cultural exchange with significant historical value."
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            117.5584,
+                            33.5423
+                        ]
+                    }
+                }
+    ]
+}

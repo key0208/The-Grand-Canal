@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking China: The Grand Canal's Legacy</title>
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: #333; /* Changed text color to dark gray for better contrast with white overlay */
+        }
+        
+        .transition-container {
+            width: 100%;
+            height: 100vh;
+            background-image: url('Image_general/2古今对比背景页.jpg'); /* Note the space in filename */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            justify-content: center; /* 水平居中 */
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(255,255,255,0.4) 20%, rgba(255,255,255,0.2)70%); /* Changed to white gradient */
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center; /* 水平居中内容 */
+        }
+        
+        .content-box {
+            width: 50%;
+            max-width: 600px;
+            padding: 60px;
+            /* 移除左边距，使内容居中 */
+        }
+        
+        .title-section {
+            margin-bottom: 40px;
+            position: relative;
+            text-align: center; /* 标题居中 */
+        }
+        
+        .title-line {
+            width: 80px;
+            height: 3px;
+            background-color: #CA9542; /* Kept the gold accent color */
+            margin-bottom: 20px;
+            margin-left: auto; /* 分隔线居中 */
+            margin-right: auto; /* 分隔线居中 */
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            color: #222; /* Slightly darker for the main title */
+        }
+        
+        .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #CA9542; /* Kept the gold accent color */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .content-text {
+            text-align: center; /* 文本居中 */
+        }
+        
+        .content-text p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #333; /* Adjusted for better readability on white background */
+            opacity: 0;
+        }
+        
+        .content-text p:nth-child(1) {
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+        
+        .content-text p:nth-child(2) {
+            animation: fadeIn 1s ease-out 0.6s forwards;
+        }
+        
+        .content-text p:nth-child(3) {
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+        
+        .highlight {
+            color: #CA9542; /* Kept the gold accent color */
+            font-weight: 400;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%; /* 居中放置 */
+            transform: translateX(-50%); /* 确保完全居中 */
+            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+            z-index: 10; /* 确保在其他元素之上 */
+            opacity: 0;
+            animation: fadeInOut 2s infinite 1.2s;
+        }
+        
+        .scroll-indicator p {
+            margin-right: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9em;
+            color: #444; /* Darker gray for scroll text */
+        }
+        
+        .scroll-arrow {
+            color: #666; /* 灰色箭头 */
+            font-size: 2em; /* 增大箭头尺寸 */
+            transition: all 0.3s ease; /* 添加悬停效果 */
+            line-height: 1;
+        }
+        
+        .scroll-arrow:hover {
+            color: #444;
+            transform: scale(1.2); /* 悬停时略微放大 */
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        @media (max-width: 1024px) {
+            .content-box {
+                width: 70%;
+                padding: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-box {
+                width: 90%;
+                padding: 30px;
+            }
+            
+            h2 {
+                font-size: 2.5em;
+            }
+            
+            .overlay {
+                background: linear-gradient(180deg, rgba(255,255,255,0.95) 20%, rgba(255,255,255,0.75) 100%); /* Adjusted for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="transition-container">
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <div class="title-section">
+                    <div class="title-line"></div>
+                    <h2>Prologue</h2>
+                    <div class="subtitle">Technology, Commerce, Culture</div>
+                </div>
+                <div class="content-text">
+                    <p>
+                        As the world's longest artificial waterway spanning over <span class="highlight">1,800 kilometers</span>, China's Grand Canal created an intricate network connecting north and south, facilitating the exchange of knowledge, technology, and cultural traditions across the empire.
+                    </p>
+                    <p>
+                        More than just a waterway for <span class="highlight">material transport</span>, it became a vital network for <span class="highlight">technological innovation</span>, <span class="highlight">commercial exchange</span>, and <span class="highlight">cultural fusion</span> — giving rise to a distinctive "Canal Civilization" that shaped China's development.
+                    </p>
+                    <p>
+                        From the Sui to the Qing Dynasty, this engineering marvel unified regions and fueled national prosperity, now hailed as a world cultural heritage masterpiece.
+                    </p>
+                </div>
+                
+                <!-- Added Scroll Down Indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-arrow">⌄</div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Added JavaScript for the scroll down functionality -->
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // 查找页面中的滚动指示器
+    var scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    // 只为滚动指示器容器绑定一次事件
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // 阻止事件冒泡
+            
+            // 尝试调用父窗口的 fullPage.js 方法
+            if (window.parent && window.parent.$.fn && window.parent.$.fn.fullpage) {
+                window.parent.$.fn.fullpage.moveSectionDown();
+            }
+        });
+    }
+    
+    // 移除对 scroll-arrow 的单独事件绑定
+    // 因为点击箭头时会自动触发父元素的事件
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporal Spatial Canal</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-northarrow/dist/leaflet.northarrow.min.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-northarrow/dist/leaflet.northarrow.min.js"></script>
+
+        <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=LXGW+WenKai+TC&family=Raleway:ital@0;1&display=swap" rel="stylesheet">
+    
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family:'Microsoft YaHei', 'SimHei', 'Arial', sans-serif;
+            background-color: #f5f2e5;
+            color: #5a4a3a;
+        }
+        
+        #map-container {
+            position: relative;
+            height: 100vh;
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        /* 省份标注*/
+        .province-label {
+            font-size: 16px;
+            color: rgba(110, 100, 90, 0.8); 
+            text-shadow: 0.5px 0.5px 3px rgba(255, 255, 255, 0.9);
+            font-family: 'Crimson Text', serif;
+            font-weight: 700;
+            font-style: normal;
+            text-align: center;
+            -webkit-text-stroke: 0.5px white !important;
+            text-stroke: 0.5px white !important;
+            opacity: 0.9;
+            padding: 2px 5px ;
+            width: auto;
+            min-width: 60px;
+            max-width: 200px;
+        }
+        
+        .title-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            z-index: 1000;
+            background-color: rgba(245, 242, 229, 0.78);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #c4b7a1;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+        
+        #intro h2{
+            margin-bottom: 25px;
+        }
+        
+        h1 {
+            margin: 0;
+            padding: 5px;
+            color: #CA9542;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 34px;
+            text-align: center; 
+            font-weight: bold; 
+            text-shadow: 1px 1px 3px rgba(137, 46, 11, 0.69); 
+            letter-spacing: 0.05em;
+        }
+        
+        h2{
+            font-size:16px;
+            font-family:'Lato', sans-serif;
+            text-align: center;
+            font-weight: 400; 
+            margin: 5px;
+        }
+        
+        p{
+            font-size: 9px;
+            font-style: italic;
+            color:#777;
+            
+        }
+        
+        
+        .leaflet-control-attribution {
+            background-color: rgba(245, 242, 229, 0.3) !important;
+            color: #5a4a3a !important;
+        }
+        
+        /* 时间轴样式 */
+        #time-control-container {
+            margin-top: 10px;
+            align-items: center; 
+            
+        }
+        
+.dynasty-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 90%; /* 限制宽度，使按钮不会过宽 */
+    margin-left: auto; /* 左边自动边距 */
+    margin-right: auto; /* 右边自动边距 */
+}
+
+.dynasty-btn {
+    background: rgba(245, 242, 229, 0.8);
+    border: 1px solid #8c2e0b;
+    border-radius: 3px;
+    padding: 5px 8px;
+    margin: 3px;
+    color: #5a4a3a;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: 120px;
+}
+
+.dynasty-btn:hover {
+    background-color: rgba(237, 182, 67, 0.1);
+}
+        
+.color-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 3px;
+    margin-right: 5px;
+}
+
+.dynasty-btn.active {
+    background-color: rgba(140, 46, 11, 0.2);
+}
+
+
+.dynasty-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+    
+}
+        
+/* text */        
+.time-text {
+    margin: 0 10px; 
+    min-width: 100px;
+    color: #5a4a3a;
+    text-align: center;
+    margin-top: 5px;
+    border-bottom: 1px;
+    border-bottom: 2px solid #8c2e0b; 
+        }
+        
+
+        
+/* 运河样式 */
+.canal-shangzhou { stroke: #313695; } /* 深蓝色 - 商周 */
+.canal-chunqiu { stroke: #4a4a9e; } /* 靛蓝色 - 春秋 */
+.canal-zhanguo { stroke: #5e3c99; } /* 蓝紫色 - 战国 */
+.canal-qinhan { stroke: #7b3294; } /* 紫色 - 秦汉 */
+.canal-weijin { stroke: #9e2963; } /* 紫红色 - 魏晋南北朝 */
+.canal-sui { stroke: #c2195d; } /* 洋红色 - 隋 */
+.canal-tang { stroke: #d7301f; } /* 红色 - 唐 */
+.canal-song { stroke: #ef6548; } /* 橙红色 - 宋 */
+.canal-yuan { stroke: #fc8d59; } /* 橙色 - 元 */
+.canal-ming { stroke: #967218; } /* 棕黄色 - 明 */
+.canal-qing { stroke: #2c7c3d; } /* 绿色 - 清 */
+.canal-modern { stroke: #385b68; } /* 墨绿色 - 现代 */ 
+        
+        
+        
+        /* 控制按钮 */
+.control-buttons {
+    margin-top: -5px;
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    justify-content: center; /* 水平居中 */
+    
+}
+
+.control-btn {
+    background: rgba(237, 182, 67, 0.2);
+    border: 1px solid #8c2e0b;
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: #5a4a3a;
+    cursor: pointer;
+    font-size: 14px;
+
+}
+
+.control-btn:hover {
+    background: rgba(245, 242, 229, 1);
+}
+        
+.vertical-schematic {
+    position: absolute;
+    top: 10%;
+    right: 8%;
+    height: 80%;
+    width: 80px;
+    z-index: 500;
+    border-radius: 4px;
+    display: none; /* 默认隐藏 */
+}
+        
+.vertical-schematic-left {
+    position: absolute;
+    top: 10%;
+    left: 40%; /* 位于左侧 */
+    height: 80%;
+    width: 80px;
+    z-index: 500;
+    display: none; /* 默认隐藏 */
+}
+        
+
+        
+
+.canal-section {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    background-color: rgba(56, 91, 104, 0.69); /* 使用现代运河的颜色 */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+
+.section-label {
+    position: absolute;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #5a4a3a;
+    background-color: rgba(245, 242, 229, 0.49);
+    padding: 2px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 510;
+    pointer-events: none;
+}
+        
+.city-label {
+    font-size: 12px;
+    color: #333;
+    background: none;
+    border: none;
+    box-shadow: none;
+    white-space: nowrap;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    pointer-events: none; /* 使标签不响应鼠标事件 */
+}
+ .horizontal-connector {
+    position: absolute;
+    height: 1px;
+    border-top: 1.5px dashed rgba(137, 55, 40, 0.74);
+    z-index: 505;
+}       
+
+a,
+a:link,
+a:visited,
+a:active {
+  color: #777 !important; /* 统一为灰色 */
+  text-decoration: underline; /* 可选，保留下划线 */
+}
+ a:hover {
+  color: #CA9542 !important;         
+}
+
+    </style>
+</head>
+<body>
+    <div id="map-container">
+        <div id="map"></div>
+        <div id="vertical-schematic" class="vertical-schematic"></div>
+        <div id="vertical-schematic-left" class="vertical-schematic-left"></div>
+        <div class="title-overlay">
+            <div id='intro'>
+            <h1>Temporal-Spatial Canal</h1>
+            <h2>The Grand Canal of China, stretching nearly 3,200 kilometers, is the world's longest artificial waterway system. Dating back to about 400 BCE, it has facilitated vital regional exchanges throughout China for millennia. In 2014, it was designated a UNESCO World Cultural Heritage Site.</h2></div>
+
+
+            <div id="time-control-container">
+                <div class="control-buttons">
+                    <button id="play-btn" class="control-btn">Play</button><span id="time-text" class="time-text">1500 BCE - 771 BCE</span>
+                    <button id="stop-btn" class="control-btn">Stop</button>
+                </div>
+                
+                <div class="dynasty-buttons">
+        <!-- Dynasty buttons will be dynamically created here -->
+                </div>
+                
+            </div>
+            
+            <div id="source"><p id="p_source">Data Source: <a href = "https://whc.unesco.org/en/list/1443/" target="_blank">Application for World Heritage Text: The Grand Canal of China, State Administration of Cultural Heritage, 2013</a> | <a href = "https://www.wochmoc.org.cn/contents/32/1826.html" target="_blank">One article counts the Grand Canal</a> |  <a href = "https://www.wochmoc.org.cn/upload/file/202004/1588058942114029891.pdf">The new concept of heritage protection brought about by the application and protection plan for the Grand Canal's World Heritage status</a> </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 朝代和时间信息
+var dynastyInfo = {
+    'Shang-Zhou': { period: '商周', time_span: '1500 BCE - 771 BCE', year: '1122 BCE', color: '#313695', className: 'canal-shangzhou' },
+    'Spring-Autumn': { period: '春秋', time_span: '770 BCE - 476 BCE', year: '506 BCE', color: '#4a4a9e', className: 'canal-chunqiu' },
+    'Warring States': { period: '战国', time_span: '476 BCE - 221 BCE', year: '360 BCE', color: '#5e3c99', className: 'canal-zhanguo' },
+    'Qin-Han': { period: '秦汉', time_span: '221 BCE - 220 CE', year: '219 BCE', color: '#7b3294', className: 'canal-qinhan' },
+    'Wei-Jin': { period: '魏晋南北朝', time_span: '220 CE - 589 CE', year: '505 CE', color: '#9e2963', className: 'canal-weijin' },
+    'Sui': { period: '隋代', time_span: '581 CE - 619 CE', year: '605 CE', color: '#c2195d', className: 'canal-sui' },
+    'Tang': { period: '唐朝', time_span: '618 CE - 907 CE', year: '738 CE', color: '#d7301f', className: 'canal-tang' },
+    'Song': { period: '宋朝', time_span: '960 CE - 1276 CE', year: '988 CE', color: '#ef6548', className: 'canal-song' },
+    'Yuan': { period: '元代', time_span: '1271 CE - 1368 CE', year: '1289 CE', color: '#fc8d59', className: 'canal-yuan' },
+    'Ming': { period: '明朝', time_span: '1368 CE - 1644 CE', year: '1528 CE', color: '#967218', className: 'canal-ming' },
+    'Qing': { period: '清朝', time_span: '1636 CE - 1912 CE', year: '1686 CE', color: '#2c7c3d', className: 'canal-qing' },
+    'Modern': { period: '现代', time_span: '1912 CE - Present', year: 'Modern', color: '#385b68', className: 'canal-modern' }
+};     
+        // Define global variables
+        var allCanalsData = null;
+        var dynastyLayers = {};
+        var currentDynasty = null;
+        var canalSectionBounds = {};
+        var citiesLayer = null;
+        let isModernDisplayed = false;
+
+        // Initialise the map: set Chinese centre point
+        var map = L.map('map', {
+    zoomControl: false,         // 可选：隐藏默认的 +/- 缩放按钮
+    scrollWheelZoom: false,     // 禁止滚轮缩放
+    doubleClickZoom: false,     // 禁止双击缩放
+    boxZoom: false,             // 禁止框选放大
+    touchZoom: false,           // 禁止触摸缩放（移动端）
+    dragging: false,            // 禁止拖动
+    zoomSnap: 1,                // 缩放级别间隔
+    zoomDelta: 0.5              // 缩放步长
+}).setView([36, 113], 6);
+
+        
+        
+        
+        // 在这里添加双击清除事件
+        map.on('dblclick', function() {
+            // Hide all layers
+            Object.keys(dynastyLayers).forEach(function(dynasty) {
+                dynastyLayers[dynasty].setStyle({opacity: 0});
+            });
+            document.getElementById('vertical-schematic').style.display = 'none';
+            document.getElementById('vertical-schematic-left').style.display = 'none';
+            
+            // 重置时间轴滑块
+            document.getElementById('time-text').textContent = `${Object.keys(dynastyInfo)[0]} (${dynastyInfo[Object.keys(dynastyInfo)[0]].year})`;
+            currentDynasty = Object.keys(dynastyInfo)[0];
+        });
+        
+        // 添加地图事件监听器，当地图缩放或平移时更新垂直轴
+map.on('moveend', function() {
+    if (currentDynasty === 'Modern' || currentDynasty === '现代') {
+        createVerticalSchematic();
+    }
+});
+
+        
+        // 创建自定义面板，确保标签显示在其他元素上方
+    map.createPane('labels');
+    map.getPane('labels').style.zIndex = 650;
+    map.getPane('labels').style.pointerEvents = 'none'; // 确保点击事件能穿透标签层
+    
+    // 添加Stamen Watercolor地图瓦片
+ L.tileLayer('https://watercolormaps.collection.cooperhewitt.org/tile/watercolor/{z}/{x}/{y}.jpg', {
+        attribution: 'Map Design: <a href="http://stamen.com">Stamen Design</a>, Data: <a href="http://openstreetmap.org">OpenStreetMap</a>',
+        subdomains: 'abcd',
+     opacity: 0.8,
+        minZoom: 1,
+        maxZoom: 16
+    }).addTo(map);
+    
+    // 创建国界和省界的图层面板
+    map.createPane('boundaries');
+    map.getPane('boundaries').style.zIndex = 450;
+    
+    // 添加国界和省界层
+    var boundariesLayer = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain_lines/{z}/{x}/{y}{r}.png', {
+        attribution: 'Boundaries &copy; <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        pane: 'boundaries',
+        opacity: 0,
+        minZoom: 1,
+        maxZoom: 16
+    }).addTo(map);
+    
+        //增加省份标注
+// 加载中国省级行政区划GeoJSON数据（面状数据）
+fetch('gjldata/china_provinces2.geojson')
+    .then(response => response.json())
+    .then(data => {
+        // 首先，添加省份边界（虚线，无填充）
+        L.geoJSON(data, {
+            style: function() {
+                return {
+                    color: '#8c8c8c',         // 边界颜色 - 灰色
+                    weight: 1.8,                // 边界宽度 - 细线
+                    opacity: 0.6,             // 边界透明度
+                    fillColor: 'transparent', // 填充颜色 - 透明
+                    fillOpacity: 0,           // 填充透明度 - 无填充
+                    dashArray: '3, 5',        // 虚线样式 - 短线长度3，间隔5
+                    lineCap: 'butt',          // 线条端点样式
+                    lineJoin: 'round',        // 线条连接样式
+                    interactive: false         // 禁用交互
+                };
+            }
+        }).addTo(map);
+        
+        // 然后，添加省份标注（使用现有样式）
+        L.geoJSON(data, {
+            onEachFeature: function(feature, layer) {
+                // 计算多边形中心点
+                var center = layer.getBounds().getCenter();
+                
+                // 获取省名（英文或中文）
+                var provinceName = feature.properties.ENG_NAME;
+                
+                if (provinceName) {
+                    // 在中心点创建标签
+                    L.marker(center, {
+                        icon: L.divIcon({
+                            html: provinceName,
+                            className: 'province-label',
+                            iconSize: [120, 30],
+                        }),
+                        pane: 'labels'
+                    }).addTo(map);
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('加载省级数据出错:', error);
+    });
+        
+        
+        // 加载所有朝代的运河数据
+        function loadAllCanals() {
+            var dynasties = Object.keys(dynastyInfo);
+            var loadedCount = 0;
+            
+            // 为每个朝代筛选并创建图层
+            dynasties.forEach(function(dynasty) {
+                // 从allCanalsData中过滤出当前朝代的运河
+                let filteredFeatures = allCanalsData.features.filter(feature => 
+                    feature.properties.period === dynastyInfo[dynasty].period);
+                
+                // 创建当前朝代的GeoJSON数据
+                let dynastyData = {
+                    type: "FeatureCollection",
+                    features: filteredFeatures
+                };
+                
+                // 为每个朝代创建特定样式的图层
+                dynastyLayers[dynasty] = L.geoJSON(dynastyData, {
+                    style: function(feature) {
+                        return {
+                            color: dynastyInfo[dynasty].color,
+                            weight: 3,
+                            opacity: 0.8,
+                            lineCap: 'round',
+                            lineJoin: 'round'
+                        };
+                    },
+                    onEachFeature: function(feature, layer) {
+                        layer.bindPopup(`<b>${dynasty} Canal</b><br>Canal Name: ${feature.properties.name_en}<br>Time: ${dynastyInfo[dynasty].year}`);
+                    }
+                });
+                
+                // 默认隐藏所有图层
+                if (dynasty !== 'Modern') {  // 默认显示商周时期
+                    dynastyLayers[dynasty].addTo(map).setStyle({opacity: 0});
+                } else {
+                    dynastyLayers[dynasty].addTo(map);
+                    currentDynasty = dynasty;
+                }
+                
+                loadedCount++;
+                
+                // 所有数据加载完成后，初始化时间轴
+                if (loadedCount === dynasties.length) {
+                    initTimeSlider();
+                }
+            });
+        }
+        
+// Initialize the timeline interaction
+function initTimeSlider() {
+    var timeText = document.getElementById('time-text');
+    var buttonContainer = document.querySelector('.dynasty-buttons');
+    var playBtn = document.getElementById('play-btn');
+    var stopBtn = document.getElementById('stop-btn');
+    
+    var dynasties = Object.keys(dynastyInfo);
+    var playInterval = null;
+    var currentIndex = 0;
+    
+    // 创建朝代按钮
+    dynasties.forEach(function(dynasty, index) {
+        var btn = document.createElement('button');
+        btn.className = 'dynasty-btn';
+        
+        // 添加颜色指示器和文本
+    var colorIndicator = document.createElement('span');
+    colorIndicator.className = 'color-indicator';
+    colorIndicator.style.backgroundColor = dynastyInfo[dynasty].color;
+        
+            btn.appendChild(colorIndicator);
+    btn.appendChild(document.createTextNode(" " + dynasty));
+        
+        btn.setAttribute('data-index', index);
+        
+        // 为按钮添加点击事件
+        btn.addEventListener('click', function() {
+            stopAutoPlay();
+            updateDisplay(index);
+        });
+        
+        buttonContainer.appendChild(btn);
+    });
+    
+    // 更新显示函数
+function updateDisplay(index) {
+    var dynasty = dynasties[index];
+    currentIndex = index;
+
+    // 更新按钮状态
+    document.querySelectorAll('.dynasty-btn').forEach(function(btn, i) {
+        if (i === index) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // 处理现代（Modern）逻辑
+    if (dynasty === 'Modern' || dynasty === '现代') {
+        // 隐藏其他朝代图层
+        Object.keys(dynastyLayers).forEach(function(d) {
+            if (d !== 'Modern' && d !== '现代') {
+                dynastyLayers[d].setStyle({opacity: 0});
+            }
+        });
+
+        // 显示 Modern 图层
+        dynastyLayers[dynasty].setStyle({opacity: 0.8});
+
+        // 加载城市图层（只加载一次）
+        if (!isModernDisplayed) {
+            loadCanalCities();
+            isModernDisplayed = true;
+        }
+
+        // 显示垂直轴图
+        setTimeout(function () {
+            createVerticalSchematic();
+            document.getElementById('vertical-schematic').style.display = 'block';
+            document.getElementById('vertical-schematic-left').style.display = 'block';
+        }, 100);
+
+    } else {
+        // 显示当前及之前所有朝代图层
+        for (var i = 0; i <= index; i++) {
+            dynastyLayers[dynasties[i]].setStyle({opacity: 0.8});
+        }
+
+        // 隐藏后续朝代图层
+        for (var i = index + 1; i < dynasties.length; i++) {
+            dynastyLayers[dynasties[i]].setStyle({opacity: 0});
+        }
+
+        // 移除 Modern 城市图层
+        if (citiesLayer && isModernDisplayed) {
+            map.removeLayer(citiesLayer);
+            isModernDisplayed = false;
+        }
+
+        // 隐藏垂直轴图
+        document.getElementById('vertical-schematic').style.display = 'none';
+        document.getElementById('vertical-schematic-left').style.display = 'none';
+    }
+
+    // 更新当前朝代和时间文本
+    currentDynasty = dynasty;
+    timeText.textContent = `${dynastyInfo[dynasty].year} `;
+}
+
+   
+    
+// Expand the simple canal distribution(right side)
+function createVerticalSchematic() {
+    var rightSchematicContainer = document.getElementById('vertical-schematic');
+    var leftSchematicContainer = document.getElementById('vertical-schematic-left');
+    
+    // 清空现有内容
+    rightSchematicContainer.innerHTML = '';
+    leftSchematicContainer.innerHTML = '';
+    
+    var mapNorth = 40.2;
+    var mapSouth = 29.88;
+    var mapHeight = mapNorth - mapSouth;
+    
+    // 获取容器的高度（像素）
+    var containerHeight = rightSchematicContainer.clientHeight;
+    
+    // 加载垂直轴数据
+    fetch('gjldata/vertical_canal_points2.geojson')
+        .then(response => response.json())
+        .then(data => {
+            data.features.forEach(function(feature) {
+                if (feature.geometry && feature.geometry.type === 'LineString') {
+                    var coords = feature.geometry.coordinates;
+                    
+                    // 找出线段的最北和最南点
+                    var maxLat = -90, minLat = 90;
+                    coords.forEach(function(coord) {
+                        var lat = coord[1];
+                        maxLat = Math.max(maxLat, lat);
+                        minLat = Math.min(minLat, lat);
+                    });
+                    
+var topPoint = map.latLngToContainerPoint([maxLat, coords[0][0]]);
+var bottomPoint = map.latLngToContainerPoint([minLat, coords[coords.length - 1][0]]);
+
+var containerHeight = document.getElementById('vertical-schematic').clientHeight;
+var topPoint = map.latLngToContainerPoint([maxLat, coords[0][0]]);
+var bottomPoint = map.latLngToContainerPoint([minLat, coords[coords.length - 1][0]]);
+var height = bottomPosition - topPosition;
+
+var schematicTopOffset = document.getElementById('vertical-schematic').getBoundingClientRect().top;
+var mapTopOffset = document.getElementById('map').getBoundingClientRect().top;
+var relativeTop = topPoint.y - (schematicTopOffset - mapTopOffset);
+var relativeBottom = bottomPoint.y - (schematicTopOffset - mapTopOffset);
+
+var topPosition = (relativeTop / containerHeight) * 100;
+var bottomPosition = (relativeBottom / containerHeight) * 100;
+var height = bottomPosition - topPosition;
+
+
+                    
+                    // 确保高度最小值
+                    height = Math.max(height, 3);
+                    
+                    // 创建垂直元素
+                    var sectionElement = document.createElement('div');
+                    sectionElement.className = 'canal-section';
+                    sectionElement.style.top = topPosition + '%';
+                    sectionElement.style.height = height + '%';
+                    
+                    // 创建标签
+                    var labelElement = document.createElement('div');
+                    labelElement.className = 'section-label';
+                    labelElement.innerText = feature.properties.name_en || '';
+                    labelElement.style.top = (topPosition + height/2) + '%';
+                    labelElement.setAttribute('data-name', feature.properties.name_en);
+
+                    
+                    // 根据名称决定放在左侧还是右侧
+                    var container;
+                    if (feature.properties.name_en === 'Wei River' || 
+                        feature.properties.name_en === 'Tongji Canal') {
+                        container = leftSchematicContainer;
+                        labelElement.style.left = '50%';
+                        labelElement.style.transform = 'translate(-50%, -50%)';
+                        labelElement.style.right = 'auto';  // 保险起见清除右边
+                    } else {
+                        container = rightSchematicContainer;
+                        labelElement.style.left = '50%';
+                        labelElement.style.transform = 'translate(-50%, -50%)';
+                        labelElement.style.right = 'auto';  // 保险起见清除右边
+
+                    }
+                    
+                    // 添加点击事件
+                    sectionElement.addEventListener('click', function() {
+                        resetCanalHighlight();
+                        highlightCanalSection(feature.properties.name_en);
+                        
+                        // 如果有边界信息，就飞到那个区域
+                        var bounds = [[minLat, coords[0][0]], [maxLat, coords[coords.length-1][0]]];
+                    });
+                    
+                    // 添加鼠标悬停效果
+                    sectionElement.addEventListener('mouseover', function() {
+                        this.style.width = '20px';
+                        this.style.backgroundColor = '#385b68';
+                    });
+                    
+                    sectionElement.addEventListener('mouseout', function() {
+                        this.style.width = '15px';
+                        this.style.backgroundColor = 'rgba(56, 91, 104, 0.67)';
+                    });
+                    
+                    // 添加到容器
+                    container.appendChild(sectionElement);
+                    container.appendChild(labelElement);
+                    createHorizontalConnectors(feature, sectionElement, container, topPosition, height);
+
+                }
+            });
+            
+            // 显示容器
+            rightSchematicContainer.style.display = 'block';
+            leftSchematicContainer.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('加载垂直运河数据出错:', error);
+        });
+}
+    
+function createHorizontalConnectors(feature, sectionElement, container, topPosition, height) {
+    // 获取线段的首尾坐标
+    var coords = feature.geometry.coordinates;
+    var startCoord = coords[0];
+    var endCoord = coords[coords.length - 1];
+    
+    // 创建开始和结束的水平连接线
+    var startConnector = document.createElement('div');
+    startConnector.className = 'horizontal-connector';
+    startConnector.style.top = topPosition + '%';
+    
+    var endConnector = document.createElement('div');
+    endConnector.className = 'horizontal-connector';
+    endConnector.style.top = (topPosition + height) + '%';
+    
+    // 根据位置设置连接线方向
+    if (container.id === 'vertical-schematic-left') {
+        startConnector.style.left = '5px';
+        startConnector.style.width = '100px';
+        endConnector.style.left = '5px';
+        endConnector.style.width = '120px';
+    } else {
+        startConnector.style.right = '15px';
+        startConnector.style.width = '100px';
+        endConnector.style.right = '15px';
+        endConnector.style.width = '100px';
+    }
+    
+    // 添加到容器
+    container.appendChild(startConnector);
+    container.appendChild(endConnector);
+    
+    // 添加地图上的对应点标记
+    var startMarker = L.circleMarker([startCoord[1], startCoord[0]], {
+        radius: 4,
+        fillColor: '#ff6600',
+        color: '#ffffff',
+        weight: 1,
+        opacity: 0,
+        fillOpacity: 0
+    }).addTo(map);
+    
+    var endMarker = L.circleMarker([endCoord[1], endCoord[0]], {
+        radius: 4,
+        fillColor: '#ff6600',
+        color: '#ffffff',
+        weight: 1,
+        opacity: 0,
+        fillOpacity: 0
+    }).addTo(map);
+    
+    // 存储标记引用以便之后清除
+    if (!window.alignmentMarkers) window.alignmentMarkers = [];
+    window.alignmentMarkers.push(startMarker, endMarker);
+}
+    
+
+// Highlight the canal sections with the designated names
+function highlightCanalSection(sectionName) {
+    // 获取对应的运河图层
+    var highlightedLayer = null;
+    
+    dynastyLayers['Modern'].eachLayer(function(layer)  {
+        if (layer.feature &&
+            layer.feature.properties &&
+            layer.feature.properties.name_en === sectionName) {
+                    
+                    // Save the original style
+                    if (!layer._originalStyle) {
+                        layer._originalStyle = {
+                            weight: layer.options.weight,
+                            color: layer.options.color,
+                            opacity: layer.options.opacity
+                        };
+                    }
+                    
+                    // 应用高亮样式
+                    layer.setStyle({
+                        weight: 4,
+                        color: '#CA9542',
+                        opacity: 1
+                    });
+                    
+                    highlightedLayer = layer;
+                }
+            });
+    
+    // 如果找到了图层，将其置于顶层
+    if (highlightedLayer) {
+        highlightedLayer.bringToFront();
+    }
+    // flash label if exists
+    var label = document.querySelector(`.section-label[data-name="${sectionName}"]`);
+    if (label) {
+        label.classList.add('flash');
+        setTimeout(() => label.classList.remove('flash'), 600);
+    }
+}
+
+// 重置所有运河段的高亮
+function resetCanalHighlight() {
+    Object.keys(dynastyLayers).forEach(function(dynasty) {
+        if (dynastyLayers[dynasty].getLayers) {
+            dynastyLayers[dynasty].getLayers().forEach(function(layer) {
+                if (layer._originalStyle) {
+                    layer.setStyle(layer._originalStyle);
+                    delete layer._originalStyle;
+                }
+            });
+        }
+    });
+}
+    
+// Process the data of vertical canals 
+//calculate the position and height of each section
+function processVerticalCanalData(data) {
+    var sections = [];
+    
+    if (data && data.features && data.features.length > 0) {
+        var northmost = -90, southmost = 90, eastmost = -180, westmost = 180;
+        
+        
+        data.features.forEach(function(feature) {
+            if (feature.geometry && feature.geometry.coordinates) {
+                var coords = feature.geometry.coordinates;
+                
+                if (feature.geometry.type === 'LineString') {
+                    coords.forEach(function(coord) {
+                        var lng = coord[0]; // 经度
+                        var lat = coord[1]; // 纬度
+                        
+                        northmost = Math.max(northmost, lat);
+                        southmost = Math.min(southmost, lat);
+                        eastmost = Math.max(eastmost, lng);
+                        westmost = Math.min(westmost, lng);
+                        
+                    });
+                }
+            }
+        });   
+        
+        var latRange = northmost - southmost;
+        northmost += latRange * 0.05; // 向上扩展5%
+        southmost -= latRange * 0.05; // 向下扩展5%
+        
+        data.features.forEach(function(feature, index) {
+            if (feature.geometry && feature.geometry.coordinates && feature.properties) {
+                var coords = feature.geometry.coordinates;
+                
+                if (feature.geometry.type === "LineString") {
+                    // 查找当前特征的边界
+                    var sectionNorth = -90;
+                    var sectionSouth = 90;
+                    var minLng = 180;
+                    var maxLng = -180;
+                    
+                    coords.forEach(function(coord) {
+                        var lng = coord[0];
+                        var lat = coord[1];
+                        sectionNorth = Math.max(sectionNorth, lat);
+                        sectionSouth = Math.min(sectionSouth, lat);
+                        minLng = Math.min(minLng, lng);
+                        maxLng = Math.max(maxLng, lng);
+                    });
+                
+                // 按纬度在地图上的相对位置计算垂直位置百分比
+                var topPercentage = 100 - ((sectionNorth - southmost) / (northmost - southmost) * 100);
+                topPercentage = Math.max(0, Math.min(100, topPercentage));
+                var heightPercentage = Math.max(5, (sectionNorth - sectionSouth) / (northmost - southmost) * 100);
+                heightPercentage *= 1.1;
+                
+                
+                
+                // 判断标签位置
+                var labelPosition = feature.properties.name_en === 'Wei River' || 
+                                  feature.properties.name_en === 'Tongji Canal' ? 'left' : 'right';
+                
+                    // 计算中心点
+                    var centerLat = (sectionNorth + sectionSouth) / 2;
+                    var centerLng = (minLng + maxLng) / 2;
+                
+                // 添加该段信息
+                sections.push({
+                    name: feature.properties.name || ``,
+                    name_en: feature.properties.name_en || ``,
+                    dynasty_en: feature.properties.dynasty_en || '',
+                    topPosition: topPercentage,
+                    height: heightPercentage,
+                    bounds: [[sectionSouth, minLng], [sectionNorth, maxLng]],
+                    labelPosition: labelPosition,
+                    centerCoord: [centerLat, centerLng]
+                });
+            }
+        }
+    });
+    }
+    
+    return sections;
+}
+// Load canal cities
+function loadCanalCities() {
+    // 如果图层已存在，先移除
+    if (citiesLayer) {
+        map.removeLayer(citiesLayer);
+    }
+    const cityFeatures = [];
+    
+    // Load cities nodes
+    fetch('gjldata/canal_cities.geojson')
+        .then(response => response.json())
+        .then(data => {
+            citiesLayer = L.geoJSON(data, {
+                pointToLayer: function(feature, latlng) {
+                    // 创建自定义图标
+                    var marker= L.circleMarker(latlng, {
+                        radius: 5,
+                        fillColor: "#c66641",
+                        color: "#ffffff",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    });
+                    cityFeatures.push(marker);
+                    
+                    // Create labels to display the English name
+                    if (feature.properties.name_en) {
+                        let labelPos;
+                        let xAnchor = 0;
+                        let yAnchor = 0;
+                        
+                        const cityName = feature.properties.name_en;
+                        
+                        if (cityName === 'Kaifeng') {
+                            labelPos = 'right';
+                            yAnchor = -5; // 上偏移
+                        } else if (cityName === 'Zhengzhou') {
+                            labelPos = 'right';
+                            yAnchor = 20; // 下偏移
+                        } else if (cityName === 'Langfang') {
+                            labelPos = 'right';
+                            yAnchor = 20; // 下偏移
+                        }else {
+                            const longitude = latlng.lng;
+                            if (longitude < 116) {
+                                labelPos = 'right';
+                            } else if (longitude > 120) {
+                                labelPos = 'left';
+                            } else if (feature.properties.id % 2 === 0) {
+                                labelPos = 'right';
+                            } else {
+                                labelPos = 'left';
+                            }
+                        }
+                        // 设置锚点
+                        if (labelPos === 'right') {
+                            xAnchor = -5;
+                        } else {
+                            xAnchor = 20;
+                        }
+
+                        
+                        var cityLabel = L.divIcon({
+                            html: feature.properties.name_en,
+                            className: 'city-label',
+                            iconSize: [100, 20],
+                            iconAnchor: [xAnchor, yAnchor]
+                        });
+                        
+                        // ✅ 添加标签到图层组
+                        const labelMarker = L.marker(latlng, {
+                            icon: cityLabel,
+                            interactive: false
+                        });
+                        cityFeatures.push(labelMarker); 
+                    }
+                    
+                    return marker;
+                }
+        });
+        citiesLayer = L.layerGroup(cityFeatures);
+        citiesLayer.addTo(map);
+        });
+}  
+
+
+    // 自动播放函数
+    function startAutoPlay() {
+        if (playInterval) return;
+        
+        currentIndex = 0; 
+        updateDisplay(currentIndex); 
+        
+        playInterval = setInterval(function() {
+           if (currentIndex < dynasties.length - 1) {
+            currentIndex++;
+            updateDisplay(currentIndex);
+            
+            // Check if we've reached Modern, and stop if so
+            if (currentIndex === dynasties.length - 1) {
+                stopAutoPlay();
+            }
+        } else {
+            stopAutoPlay();
+        }
+        },1000); 
+    }
+    
+    // 停止自动播放
+    function stopAutoPlay() {
+        if (playInterval) {
+            clearInterval(playInterval);
+            playInterval = null;
+        }
+    }
+    
+    // 播放按钮点击事件
+    playBtn.addEventListener('click', startAutoPlay);
+    
+    // 停止按钮点击事件
+    stopBtn.addEventListener('click', stopAutoPlay);
+    
+    // 初始显示第一个朝代
+    updateDisplay(dynasties.length - 1);
+}
+        
+// Load main water
+function loadWaterBodies() {
+    fetch('gjldata/main_river.geojson')  
+        .then(response => response.json())
+        .then(data => {
+            L.geoJSON(data, {
+                style: function(feature) {
+                    return {
+                        color: '#6eafdf',  // Light blue color for rivers
+                        weight: 2,
+                        opacity: 0.75,
+                        fillColor: '#6eafdf',
+                        fillOpacity: 0.4
+                    };
+                },
+                onEachFeature: function(feature, layer) {
+                    if (feature.properties && feature.properties.name) {
+                        layer.bindPopup(feature.properties.name);
+                    }
+                }
+            }).addTo(map);
+            
+            console.log("Major rivers added to map");
+        })
+        .catch(error => {
+            console.error('Error loading river data:', error);
+        });
+}        
+        // 在初始化过程中加载数据
+Promise.all([
+    fetch('ancient_canal2.geojson').then(response => response.json()),
+    fetch('gjldata/chinese_canal.geojson').then(response => response.json())
+])
+.then(([ancientData, modernData]) => {
+    modernData.features.forEach(feature => {
+        feature.properties.period = '现代';
+    });
+    
+
+
+modernData.features.forEach(feature => {
+    // 根据名称分类存储坐标范围
+    if (feature.properties.name && feature.geometry && feature.geometry.coordinates) {
+        var sectionName = feature.properties.name;
+        var coordinates = feature.geometry.coordinates;
+        
+        // 如果是MultiLineString，处理第一个线段
+        if (feature.geometry.type === 'MultiLineString' && coordinates.length > 0) {
+            coordinates = coordinates[0];
+        }
+        
+        // 计算坐标的边界
+        if (coordinates.length > 0) {
+            var minLat = Infinity, maxLat = -Infinity, minLng = Infinity, maxLng = -Infinity;
+            
+            coordinates.forEach(function(coord) {
+                minLng = Math.min(minLng, coord[0]);
+                maxLng = Math.max(maxLng, coord[0]);
+                minLat = Math.min(minLat, coord[1]);
+                maxLat = Math.max(maxLat, coord[1]);
+            });
+            
+            canalSectionBounds[sectionName] = [[minLat, minLng], [maxLat, maxLng]];
+        }
+    }
+});
+    
+    // 合并两个数据集
+    allCanalsData = {
+        type: "FeatureCollection",
+        features: [...ancientData.features, ...modernData.features]
+    };
+    
+    // Load all layers
+    loadAllCanals();
+    loadWaterBodies();
+})
+.catch(error => {
+    console.error('加载运河数据出错:', error);
+});
+
+    </script>
+</body>
+</html>

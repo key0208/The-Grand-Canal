@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epilogue: The Grand Canal's Legacy</title>
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: #333; /* Dark gray text color for better contrast with white overlay */
+        }
+        
+        .transition-container {
+            width: 100%;
+            height: 100vh;
+            background-image: url('Image_general/2古今对比背景页.jpg'); /* Using the same background image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(255,255,255,0.4) 20%, rgba(255,255,255,0.2)70%); /* White gradient overlay */
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center; /* 水平居中内容 */
+        }
+        
+        .content-box {
+            width: 50%;
+            max-width: 600px;
+            padding: 60px;
+            /* 移除左边距，使内容居中 */
+        }
+        
+        .title-section {
+            margin-bottom: 40px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            text-align: center;
+        }
+        
+        .title-line {
+            width: 80px;
+            height: 3px;
+            background-color: #CA9542; /* Gold accent color */
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            color: #222; /* Slightly darker for the main title */
+        }
+        
+        .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #CA9542; /* Gold accent color */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* 样式2：两侧缩进 - 已修改为完全居中 */
+        .poem-style-2 {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #333;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.6s forwards;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .poem-style-2 .poem-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: 300;
+            width: 100%;
+            text-align: center; /* 确保所有文本都居中 */
+        }
+        
+        .poem-style-2 .poem-line-container {
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center; /* 容器居中显示 */
+            text-align: center;
+        }
+        
+        .poem-style-2 .indent-1 {
+            /* 移除左右边距，保持居中 */
+        }
+        
+        .poem-style-2 .indent-2 {
+            /* 移除左右边距，保持居中 */
+            font-size: 1.2em;
+        }
+        
+        .poem-style-2 .emphasis {
+            font-size: 1.6em;
+            font-weight: 400;
+            color: #222;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            /* 居中显示 */
+        }
+        
+        .poem-style-2 .final {
+            color: #CA9542;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        /* 新增：简化的滚动指示器样式 - 只有箭头 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%; /* 居中放置 */
+            transform: translateX(-50%); /* 确保完全居中 */
+            cursor: pointer; /* 添加指针样式表示可点击 */
+            z-index: 10; /* 确保在其他元素之上 */
+            opacity: 0;
+            animation: fadeInOut 2s infinite 1.5s; /* 稍微延迟出现 */
+        }
+        
+        .scroll-arrow {
+            color: #666; /* 灰色箭头 */
+            font-size: 2em; /* 增大箭头尺寸 */
+            transition: all 0.3s ease; /* 添加悬停效果 */
+            line-height: 1;
+        }
+        
+        .scroll-arrow:hover {
+            color: #444;
+            transform: scale(1.2); /* 悬停时略微放大 */
+        }
+        
+        /* 通用动画 */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .content-box {
+                width: 70%;
+                padding: 40px;
+            }
+            
+            .poem-line {
+                font-size: 1.2em !important;
+            }
+            
+            .emphasis {
+                font-size: 1.4em !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-box {
+                width: 90%;
+                padding: 30px;
+            }
+            
+            h2 {
+                font-size: 2.5em;
+            }
+            
+            .overlay {
+                background: linear-gradient(180deg, rgba(255,255,255,0.95) 20%, rgba(255,255,255,0.75) 100%); /* Adjusted for mobile */
+            }
+            
+            .poem-line {
+                font-size: 1.1em !important;
+            }
+            
+            .emphasis {
+                font-size: 1.3em !important;
+            }
+            
+            .scroll-arrow {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="transition-container">
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <div class="title-section">
+                    <div class="title-line"></div>
+                    <h2>Epilogue</h2>
+                </div>
+                
+                <div class="poem-style-2">
+                    <div class="poem-line-container">
+                        <div class="poem-line emphasis">Not just a canal.</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line">A signal.</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line">A lifeline.</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line">A scroll of moving ink.</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line emphasis">It carried more than cargo —</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line">It carried change.</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line">And in its wake,</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line">a civilization found its rhythm.</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line final">Still flowing.</div>
+                    </div>
+                    <div class="poem-line-container">
+                        <div class="poem-line final">Still connecting.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 新增：简化的滚动指示器 - 只有箭头 -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">⌄</div>
+        </div>
+    </div>
+    
+    <!-- 添加JavaScript功能 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // 查找页面中的滚动指示器
+    var scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    // 只为滚动指示器容器绑定一次事件
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // 阻止事件冒泡
+            
+            // 尝试调用父窗口的 fullPage.js 方法
+            if (window.parent && window.parent.$.fn && window.parent.$.fn.fullpage) {
+                window.parent.$.fn.fullpage.moveTo('TeamPage');
+            }
+        });
+    }
+    
+    // 移除对 scroll-arrow 的单独事件绑定
+    // 因为点击箭头时会自动触发父元素的事件
+});
+    </script>
+</body>
+</html>

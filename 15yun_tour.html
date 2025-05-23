@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Canal: Tourism and Legacy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .transition-container {
+            width: 100%;
+            height: 100vh;
+            background-image: url('yydimages/13bg.jpg');
+            /* Ensure this path is correct */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0.3)70%);
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            padding: 40px;
+        }
+
+        .text-column {
+            flex: 1;
+            padding: 60px 30px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+            max-height: calc(100vh - 80px);
+            position: relative;
+        }
+
+        .iframe-column {
+            flex: 2;
+            padding: 60px 10px 10px 10px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            height: calc(100vh - 80px);
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #CA9542;
+            /* User provided border color */
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .title-line {
+            width: 80px;
+            height: 3px;
+            background-color: #CA9542;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #CA9542;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #CA9542;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .content-text {
+            margin-top: 20px;
+        }
+
+        .content-text p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #333;
+            opacity: 0;
+            /* Initial state for animation */
+        }
+
+        /* Animation for paragraphs */
+        .content-text p:nth-child(1) {
+            animation: fadeIn 0.7s ease-out 0.3s forwards;
+        }
+
+        .content-text p:nth-child(2) {
+            animation: fadeIn 0.7s ease-out 0.5s forwards;
+        }
+
+        .content-text p:nth-child(3) {
+            animation: fadeIn 0.7s ease-out 0.7s forwards;
+        }
+
+        /* Added for the third paragraph */
+
+        .highlight {
+            color: #CA9542;
+            font-weight: 400;
+        }
+
+        /* Added scroll indicator styles from trans page */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 60px;
+            left: 4%;
+            display: flex;
+            align-items: center;
+            animation: fadeInOut 2s infinite 1.2s;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .scroll-indicator p {
+            margin-right: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9em;
+            color: #444;
+        }
+
+        .scroll-arrow {
+            width: 35px;
+            height: 35px;
+            border: 2px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInOut {
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 992px) {
+            body {
+                overflow-y: auto;
+                height: auto;
+            }
+
+            .transition-container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .content-wrapper {
+                flex-direction: column;
+                padding: 20px;
+                height: auto;
+                align-items: stretch;
+            }
+
+            .text-column {
+                order: 2;
+                padding: 20px;
+                max-height: none;
+                margin-top: 20px;
+                overflow-y: visible;
+            }
+
+            .iframe-column {
+                order: 1;
+                width: 100%;
+                height: 60vh;
+                padding: 10px 0 20px 0;
+                min-height: 400px;
+            }
+
+            h2 {
+                font-size: 2.2em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+                margin-bottom: 20px;
+            }
+
+            .content-text p {
+                font-size: 0.95em;
+            }
+
+            /* Hide scroll indicator on mobile */
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .iframe-column {
+                height: 50vh;
+                min-height: 350px;
+            }
+
+            .text-column {
+                padding: 15px;
+            }
+
+            .content-wrapper {
+                padding: 15px;
+            }
+
+            .content-text {
+                margin-top: 15px;
+            }
+
+            /* Hide scroll indicator on mobile */
+            .scroll-indicator {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transition-container">
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+            <div class="text-column">
+
+                <p class="subtitle">CULTURAL HERITAGE</p>
+                <div class="content-text">
+                    <p>
+  In 2014, the <span class="highlight">Grand Canal</span> was inscribed as a 
+  <span class="highlight">UNESCO World Cultural Heritage site</span>, recognizing its significance as 
+  the <span class="highlight">world's oldest and longest artificial waterway</span> still partially in use.
+</p>
+
+<p>
+  Stretching <span class="highlight">1,776 kilometers</span> from <span class="highlight">Beijing to Zhejiang</span>, 
+  the canal passes through <span class="highlight">eight provinces</span> and contains over 
+  <span class="highlight">150 national-level cultural relics</span> along its route. These relics reflect the canal's 
+  role in <span class="highlight">political, economic, and cultural development</span> throughout Chinese history.
+</p>
+
+<p>
+  Preserving these landmarks protects both <span class="highlight">China’s hydraulic engineering achievements</span> 
+  and the <span class="highlight">living traditions</span> embedded in these sites, 
+  helping to ensure this <span class="highlight">2,000-year legacy</span> continues to endure for future generations.
+</p>
+                </div>
+                <!-- <div class="content-text">
+                    <p>
+                        In 2014, the Grand Canal was inscribed as a <span class="highlight">UNESCO World Cultural
+                            Heritage site</span>, recognizing its exceptional universal value as the world's oldest and
+                        longest artificial waterway still in partial use today.
+                    </p>
+
+                    <p>
+                        The magnificent <span class="highlight">Grand Canal cultural landscape</span> features a
+                        remarkable density of protected heritage sites, with over 150 national-level cultural relics
+                        distributed across its 1,776 km journey through eight provinces, from Beijing in the north to
+                        Zhejiang in the south.
+                    </p>
+
+                    <p>
+                        The preservation of these <span class="highlight">cultural heritage landmarks</span> not only
+                        safeguards China's engineering achievements but also protects the living traditions and
+                        historical narratives embodied in these remarkable structures, ensuring this 2,500-year legacy
+                        continues for future generations.
+                    </p>
+                </div> -->
+            </div>
+
+            <div class="iframe-column">
+                <iframe class="map-iframe" src="yun_tourism.html" title="Grand Canal Tourism Webpage"></iframe>
+            </div>
+        </div>
+
+        <!-- Scroll indicator outside content-wrapper, like in trans page -->
+        
+        
+        <div class="scroll-indicator">
+            <p>Scroll down</p>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </div>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+            // 添加滚动监听，让时间线元素逐步出现
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            function checkIfInView() {
+                timelineItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                    
+                    if (rect.top <= windowHeight * 0.8) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkIfInView();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkIfInView);
+            
+            // 为滚动指示器添加点击事件
+            var scrollIndicator = document.querySelector('.scroll-indicator');
+            var scrollArrow = document.querySelector('.scroll-arrow');
+            
+            
+            // 如果找到了滚动箭头，单独为其添加点击事件
+            if (scrollArrow) {
+                scrollArrow.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // 尝试调用父窗口的 fullPage.js 方法
+                    if (window.parent && window.parent.$.fn && window.parent.$.fn.fullpage) {
+                        window.parent.$.fn.fullpage.moveTo('EpiloguePage');
+                    }
+                });
+            }
+        });
+    
+    </script>
+</body>
+
+</html>

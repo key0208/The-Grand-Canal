@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Networking China: The Grand Canal’s Legacy</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.6/jquery.fullPage.css" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google fonts -->
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icon -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.6/jquery.fullPage.min.js"></script>
+
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            /* Changed to Lato */
+
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section {
+            background: url('background1.jpg') no-repeat center center;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            /* 确保子绝对定位元素相对于此定位 */
+            overflow: hidden;
+            /* 防止内容溢出 */
+        }
+
+        /* 添加半透明叠加层，但排除指定部分 */
+        .section:not(#Landing):not(#):not(#Confluence1):not(#Tech):not(#Commerce):not(#Culture):not(#Heritage)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.65);
+            z-index: 0;
+        }
+
+        #Landing {
+            background-position: center top;
+        }
+
+        #History {
+            background-position: center 10%;
+        }
+
+        #Confluence1 {
+            background-position: center 20%;
+        }
+
+        #Confluence2 {
+            background-position: center 25%;
+        }
+
+        #Tech {
+            background-position: center 30%;
+        }
+
+        #Commerce {
+            background-position: center 40%;
+        }
+
+        #Culture {
+            background-position: center 50%;
+        }
+
+
+        #Confluence2 {
+            position: relative;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #Confluence2::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Image_general/2古今对比背景页.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            /* 调整这个值控制透明度：0.0完全透明，1.0完全不透明 */
+            z-index: -1;
+        }
+
+        #Confluence2 iframe {
+            width: 100%;
+            height: 94%;
+            border: none;
+            margin-top: 55px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Future/Heritage页面特定背景 */
+        #Heritage {
+            background-image: url('Image_general/2古今对比背景页.jpg');
+            background-size: cover;
+            background-position: center center;
+        }
+
+        /* Team页面背景样式修改，与首页保持一致 */
+        #Team {
+            background-image: url('Image_general/标题页测试.jpg');
+            /* 使用与首页相同的背景图 */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* 添加遮罩层，与首页保持一致 */
+        #Team::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.2) 100%);
+            z-index: 0;
+        }
+
+        /* 确保section内容在叠加层之上 */
+        .container1,
+        .description,
+        .next {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Base menu styles */
+        #menu {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 70;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #menu li.menu-category {
+            float: left;
+            margin: 0 5px;
+            position: relative;
+        }
+
+        #menu li.menu-category a.main-link {
+            text-decoration: none;
+            color: #333;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 7px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        /* Hide submenus by default */
+        #menu .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            padding: 5px 0;
+            min-width: 120px;
+            margin-top: 5px;
+            list-style-type: none;
+            z-index: 80;
+        }
+
+        /* Style for submenu items */
+        #menu .submenu li {
+            display: block;
+            margin: 0;
+            width: 100%;
+        }
+
+        #menu .submenu li a {
+            display: block;
+            padding: 6px 15px;
+            text-decoration: none;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        /* Hover effects */
+        #menu li.menu-category a.main-link:hover,
+        #menu li.menu-category.active a.main-link {
+            background: rgba(202, 149, 66, 0.8);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        #menu .submenu li a:hover,
+        #menu .submenu li.active a {
+            background: rgba(202, 149, 66, 0.2);
+            color: #8B4513;
+            padding-left: 18px;
+        }
+
+        /* Active menu category */
+        #menu li.menu-category.active .submenu {
+            display: block;
+        }
+
+        /* Small triangle indicator */
+        #menu li.menu-category a.main-link::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #333;
+            margin-left: 6px;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+
+        #menu li.menu-category.active a.main-link::after {
+            transform: rotate(180deg);
+        }
+
+        /* Landing page */
+        #Landing {
+            background-image: url('Image_general/标题页测试.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        #landing-title {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+        }
+
+        #landing-title1,
+        #landing-title2 {
+            margin: 0;
+            font-family: 'Ma Shan Zheng', cursive;
+
+        }
+
+        #landing-title1 {
+            font-size: 6.2em;
+            /* 材质效果 */
+            background-image: url('Image_general/字体材质.jpg');
+            background-size: cover;
+            background-position: center;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            /* 为材质文字添加阴影 */
+            filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.7));
+        }
+
+        #landing-title2 {
+            font-size: 4em;
+            /* 材质效果 */
+            background-image: url('Image_general/字体材质.jpg');
+            background-size: cover;
+            background-position: center;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            /* 为材质文字添加阴影 */
+            filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.7));
+        }
+
+        #landing-title3-1,
+        #landing-title3-2 {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            font-family: 'ZCOOL XiaoWei', serif;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        #landing-title3-1 {
+            bottom: 25%;
+        }
+
+        #landing-title3-2 {
+            bottom: 15%;
+        }
+
+        #button-explore {
+            position: absolute;
+            bottom: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            background-color: rgba(139, 69, 19, 0.7);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'ZCOOL XiaoWei', serif;
+        }
+
+        #button-explore:hover {
+            background-color: rgba(139, 69, 19, 0.9);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        /* Container for each section */
+        .container1 {
+            width: 90%;
+            height: 100%;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+
+        /* Description sections */
+        .description {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .description h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3em;
+            margin-top: 0px;
+        }
+
+        .description h5 {
+            font-family: 'ZCOOL XiaoWei', serif;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .description p {
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Next page button */
+        .next {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .next a {
+            color: #8B4513;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .next a:hover {
+            color: #5D2E0C;
+        }
+
+        /* 调整整个团队容器的上边距，使所有内容向下移 */
+        #container-team {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 80px;
+            /* 增加上边距，原来是60px */
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+
+        /* 修改Team页面的标题样式，与首页风格匹配 */
+        #h1-team-title {
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+
+        #p-team-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+            margin-bottom: 40px;
+            font-size: 2em;
+            /* 这里增加了字体大小，原来是1.5em */
+            font-weight: 400;
+            /* 可以选择性地增加字体粗细 */
+        }
+
+        /* 修改头像样式，增加阴影和放大效果 */
+        .photo {
+            width: 140px;
+            height: 140px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+            /* 柔和的阴影 */
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            /* 更细的边框（从3px改为1px） */
+            transition: all 0.3s ease;
+            position: relative;
+            /* 为内部边框做准备 */
+        }
+
+        .photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+            /* 内部细边框 */
+            pointer-events: none;
+            /* 确保不会影响交互 */
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 修改成员卡片样式，更好地匹配新背景 */
+        .profile {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3列等宽 */
+            width: 70%;
+            /* 减小宽度，集中到页面中心 */
+            max-width: 1000px;
+            gap: 30px;
+            /* 卡片之间的间距 */
+            margin: 0 auto 40px auto;
+            justify-content: center;
+            margin-top: 10px;
+            /* 添加上边距，使面板与标题有更多间隔 */
+        }
+
+        .member {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 25px 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            /* 减轻阴影 */
+            transition: all 0.3s ease;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* 添加微妙的边框 */
+        }
+
+        .member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 调整照片样式 */
+        .photo {
+            width: 180px;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border: 3px solid white;
+        }
+
+        .info h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #8B4513;
+            margin-bottom: 5px;
+        }
+
+        .info h5 {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+
+        .info p .material-symbols-outlined {
+            margin-right: 10px;
+        }
+
+        /* 修改版权信息样式 */
+        .foot {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            margin: 0;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.65);
+            text-align: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            z-index: 2;
+        }
+
+        .foot p {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            box-sizing: border-box;
+            color: #444;
+            font-size: 0.9em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .foot a {
+            color: #CA9542;
+            /* 金色链接 */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .foot a:hover {
+            color: #E0B870;
+            /* 悬停时更亮的金色 */
+            text-decoration: none;
+        }
+
+        /* 重写fullPage.js的一些默认样式，确保版权栏没有边距限制 */
+        .fp-tableCell {
+            padding: 0;
+            overflow: visible;
+        }
+
+        .contact-info {
+            font-size: 0.9em;
+            /* 更小的字体 */
+            color: #666;
+            /* 略微淡化的颜色 */
+            margin: 4px 0;
+            /* 调整间距 */
+        }
+
+        .contact-info .material-symbols-outlined,
+        .contact-info img {
+            vertical-align: middle;
+            /* 图标与文字的垂直对齐 */
+        }
+
+        /* 使页面响应式 */
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .member {
+                margin: 0 0 30px 0;
+            }
+
+            .photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            #h1-team-title {
+                font-size: 2.5em;
+            }
+
+            #p-team-subtitle {
+                font-size: 1.2em;
+            }
+        }
+
+        /* iframes for content */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 新的首页样式，使用Montserrat和Playfair Display字体 */
+        #Landing {
+            background-image: url('Image_general/标题页测试.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #Landing::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.2) 100%);
+            /* Changed to white gradient */
+            z-index: 0;
+        }
+
+        .landing-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .landing-subtitle {
+            color: #CA9542;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 1em;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+            animation-delay: 0.2s;
+        }
+
+        .landing-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #333;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+            animation-delay: 0.4s;
+            max-width: 80%;
+        }
+
+        .landing-subtitle2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .landing-subtitle2::after {
+            content: '';
+            display: block;
+            margin: 20px auto 0;
+            width: 80px;
+            height: 3px;
+            background-color: #CA9542;
+        }
+
+        .landing-description {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 40px;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+            animation-delay: 0.7s;
+        }
+
+        #landing-button {
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            padding: 12px 30px;
+            border: 2px solid #CA9542;
+            background-color: rgba(202, 149, 66, 0.2);
+            color: #333;
+            font-size: 1em;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+            animation-delay: 0.9s;
+        }
+
+        #landing-button:hover {
+            background-color: rgba(202, 149, 66, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .landing-credits {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #555;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .landing-title {
+                font-size: 2.5em;
+                max-width: 90%;
+            }
+
+            .landing-subtitle2 {
+                font-size: 1.5em;
+            }
+
+            .landing-description {
+                max-width: 90%;
+                padding: 0 15px;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            #menu {
+                top: 10px;
+                right: 10px;
+            }
+
+            #menu li.menu-category {
+                margin: 0 3px;
+            }
+
+            #menu li.menu-category a.main-link {
+                padding: 5px 8px;
+                font-size: 12px;
+            }
+
+            #menu .submenu {
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #menu {
+                width: auto;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                max-width: 300px;
+            }
+
+            #menu li.menu-category {
+                margin: 2px;
+            }
+
+            #menu .submenu {
+                position: absolute;
+                right: 0;
+                width: auto;
+            }
+        }
+
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0.6) 100%);
+            /* Changed to white gradient */
+            z-index: 1;
+        }
+        
+                .scroll-arrow {
+            width: 35px;
+            height: 35px;
+            border: 2px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style='overflow: hidden; height:100%'>
+
+    <!-- Update the menu HTML structure -->
+    <ul id="menu">
+        <!-- Main Menu Categories -->
+        <li class="menu-category" data-category="overview">
+            <a href="#LandingPage" class="main-link">Overview</a>
+            <ul class="submenu">
+                <li data-menuanchor="LandingPage"><a href="#LandingPage">Home</a></li>
+                <li data-menuanchor="IntroPage1"><a href="#IntroPage1">Prologue</a></li>
+                <li data-menuanchor="HistoryPage"><a href="#HistoryPage">History</a></li>
+                <li data-menuanchor="IntroPage2"><a href="#IntroPage2">Thread</a></li>
+                <li data-menuanchor="Confluence1Page"><a href="#Confluence1Page">Network</a></li>
+                <li data-menuanchor="Confluence2Page"><a href="#Confluence2Page">Timeline</a></li>
+            </ul>
+        </li>
+        <li class="menu-category" data-category="technology">
+            <a href="#IntroPage3" class="main-link">Technology</a>
+            <ul class="submenu">
+                <li data-menuanchor="IntroPage3"><a href="#IntroPage3">Introduction</a></li>
+                <li data-menuanchor="TechPage"><a href="#TechPage">Technology Dissemination</a></li>
+            </ul>
+        </li>
+        <li class="menu-category" data-category="commerce">
+            <a href="#IntroPage4" class="main-link">Commerce</a>
+            <ul class="submenu">
+                <li data-menuanchor="IntroPage4"><a href="#IntroPage4">Introduction</a></li>
+                <li data-menuanchor="CommercePage"><a href="#CommercePage">Commerce Network</a></li>
+            </ul>
+        </li>
+        <li class="menu-category" data-category="culture">
+            <a href="#IntroPage5" class="main-link">Culture</a>
+            <ul class="submenu">
+                <li data-menuanchor="IntroPage5"><a href="#IntroPage5">Introduction</a></li>
+                <li data-menuanchor="CulturePage"><a href="#CulturePage">Culture Exchange</a></li>
+            </ul>
+        </li>
+        <li class="menu-category" data-category="future">
+            <a href="#TransportPage" class="main-link">Future</a>
+            <ul class="submenu">
+                <li data-menuanchor="TransportPage"><a href="#TransportPage">Traffic transfer</a></li>
+                <li data-menuanchor="HeritagePage"><a href="#HeritagePage">Comparison</a></li>
+                <li data-menuanchor="TourismPage"><a href="#TourismPage">Protection</a></li>
+                <li data-menuanchor="EpiloguePage"><a href="#EpiloguePage">Epilogue</a></li>
+                <li data-menuanchor="TeamPage"><a href="#TeamPage">Team</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div id="fullpage">
+        <!-- Landing page (existing) -->
+        <div class="section" id="Landing">
+            <div class="landing-content">
+                <div class="landing-subtitle">Historical Network</div>
+                <h1 class="landing-title">Networking China: The Grand Canal's Legacy</h1>
+                <h2 class="landing-subtitle2">Technology, Commerce, Culture Network</h2>
+                <p class="landing-description">Explore how the Grand Canal created a comprehensive network that
+                    facilitated the exchange of ideas, goods, and traditions, serving as the backbone of China's
+                    development for over two millennia.</p>
+                <a href="#IntroPage1" id="landing-button">Start Exploring</a>
+            </div>
+            <div class="landing-credits">
+                <p>A World Heritage Site carrying the mission of connection and exchange</p>
+            </div>
+ 
+        </div>
+
+        <!-- 2. Overview Intro (NEW) -->
+        <div class="section" id="Intro1">
+            <iframe src="2overview.html" title="Overview Introduction"></iframe>
+                <!-- Added Scroll Down Indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-arrow">⌄</div>
+                </div>
+        </div>
+
+        <!-- 3. HISTORY (existing) -->
+        <div class="section" id="History">
+            <iframe src="3temporal_spatial_canal.html"></iframe>
+            <!-- 添加一个滚动触发区域 -->
+            <div
+                style="position: absolute; bottom: 0; left: 0; width: 100%; height: 60px; z-index: 2; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));">
+            </div>
+        </div>
+
+        <!-- 4. Intro (NEW) -->
+        <div class="section" id="Intro2">
+            <iframe src="4Intro.html" title="Introduction"></iframe>
+        </div>
+
+        <!-- 5. confluence - First Page (existing) -->
+        <div class="section" id="Confluence1">
+            <div
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;">
+                <iframe src="5three.html" title="NETWORK"
+                    style="width: 100%; height: 100%; border: none; pointer-events: auto;"></iframe>
+            </div>
+            <!-- 添加一个滚动触发区域 -->
+            <div
+                style="position: absolute; bottom: 0; left: 0; width: 100%; height: 91px; z-index: 2; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));">
+            </div>
+        </div>
+
+        <!-- 6. confluence - Second Page (existing) -->
+        <div class="section" id="Confluence2">
+            <iframe src="6bubble_map.html"></iframe>
+            <!-- 添加一个滚动触发区域 -->
+            <div
+                style="position: absolute; bottom: 0; left: 0; width: 100%; height: 91px; z-index: 2; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));">
+            </div>
+        </div>
+
+        <!-- 7. Intro-Technology (NEW) -->
+        <div class="section" id="Intro3">
+            <iframe src="7intro-technolege.html" title="Technology Introduction"></iframe>
+        </div>
+
+        <!-- 8. TECH (existing, note: this seems to use Culture id in the original code) -->
+        <div class="section" id="Tech">
+            <iframe src="hky_tech.html" title="技术传播"></iframe>
+        </div>
+
+        <!-- 9. Intro-Business (NEW) -->
+        <div class="section" id="Intro4">
+            <iframe src="9intro-business.html" title="Business Introduction"></iframe>
+        </div>
+
+        <!-- 10. COMMERCE (existing) -->
+        <div class="section" id="Commerce">
+            <iframe src="yun_commerce.html" title="商业网络"></iframe>
+        </div>
+
+        <!-- 11. Intro-Culture (NEW) -->
+        <div class="section" id="Intro5">
+            <iframe src="11intro-culture.html" title="Culture Introduction"></iframe>
+        </div>
+
+        <!-- 12. CULTURE (existing) -->
+        <div class="section" id="Culture">
+            <iframe src="12culture.html" title="文化交流"></iframe>
+        </div>
+
+
+        <!-- 13. CULTURE (existing) -->
+        <div class="section" id="Transport">
+            <iframe src="13yun_trans_chart.html" title="交通对比"></iframe>
+
+        </div>
+
+        <!-- 14. HERITAGE (existing) -->
+        <div class="section" id="Heritage">
+            <iframe src="14yun_trans.html" title="交通对比"></iframe>
+        </div>
+
+        <!-- 15. CULTURE (existing) -->
+        <div class="section" id="Tourism">
+            <iframe src="15yun_tour.html" title="旅游业"></iframe>
+        </div>
+
+        <!-- 16. CULTURE (existing) -->
+        <div class="section" id="Epilogue">
+            <iframe src="16.html" title="结语"></iframe>
+        </div>
+
+
+        <!-- Enhanced Team Section HTML -->
+        <div class="section" id="Team">
+            <div class="container1" id="container-team">
+                <div class="description" id="description-team">
+                    <p id="p-team-subtitle">Our Creative Team：</p>
+                </div>
+                <div class="profile">
+                    <div class="member">
+                        <div class="photo">
+                            <img src="Image_general/衡可意.jpg" alt="Keyi Heng" />
+                        </div>
+                        <div class="info" id="info-heng">
+                            <h3>Keyi Heng</h3>
+                            <h5>Co-Producer</h5>
+                            <p class="contact-info"><span class="material-symbols-outlined">mail</span>
+                                hengkeykeykey@outlook.com</p>
+                            <p class="contact-info"><img src="Image_general/github.png" width="24" height="24"
+                                    style="margin-right: 10px;">@key0208</p>
+                        </div>
+                    </div>
+                    <div class="member">
+                        <div class="photo">
+                            <img src="Image_general/yyd.jpg" alt="Yiduo Yun" />
+                        </div>
+                        <div class="info" id="info-yun">
+                            <h3>Yiduo Yun</h3>
+                            <h5>Co-Producer</h5>
+                            <p class="contact-info"><span class="material-symbols-outlined">mail</span>
+                                yunyiduo2002@outlook.com</p>
+                            <p class="contact-info"><img src="Image_general/github.png" width="24" height="24"
+                                    style="margin-right: 10px;">@yyd2002</p>
+                        </div>
+                    </div>
+                    <div class="member">
+                        <div class="photo">
+                            <img src="Image_general/gjl.jpg" alt="Jialei Guo" />
+                        </div>
+                        <div class="info" id="info-guo">
+                            <h3>Jialei Guo</h3>
+                            <h5>Co-Producer</h5>
+                            <p class="contact-info"><span class="material-symbols-outlined">mail</span>
+                                z19991108@126.com</p>
+                            <p class="contact-info"><img src="Image_general/github.png" width="24" height="24"
+                                    style="margin-right: 10px;">@JialeiGuo1108</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer with enhanced styling -->
+            <div class="foot">
+                <p>© 2025 The Grand Canal's Legacy<br>Keyi Heng, Yiduo Yun, Jialei Guo <a
+                        href="https://www.ucl.ac.uk/">University College London</a>, <a
+                        href="https://www.ucl.ac.uk/bartlett/casa">The Bartlett Centre for Advanced Spatial Analysis</a>
+                </p>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $('#fullpage').fullpage({
+                    //Navigation
+                    menu: '#menu',
+                    lockAnchors: false,
+                    anchors: ['LandingPage', 'IntroPage1', 'HistoryPage', 'IntroPage2', 'Confluence1Page',
+                        'Confluence2Page', 'IntroPage3', 'TechPage', 'IntroPage4', 'CommercePage',
+                        'IntroPage5', 'CulturePage', 'TransportPage', 'HeritagePage', 'TourismPage', 'EpiloguePage', 'TeamPage'],
+                    navigation: true,
+                    navigationPosition: 'right',
+                    navigationTooltips: ['Home', 'Prologue', 'History', 'Thread', 'Network', 'Timeline',
+                        'Introduction', 'Technology Dissemination', 'Introduction', 'Commerce Network',
+                        'Introduction', 'Culture Exchange', 'Traffic transfer', 'Comparison', 'Protection', 'Epilogue', 'Team'],
+                    showActiveTooltip: false,
+                    slidesNavigation: true,
+                    slidesNavPosition: 'bottom',
+
+                    //Scrolling
+                    css3: true,
+                    scrollingSpeed: 700,
+                    autoScrolling: true,
+                    fitToSection: true,
+                    fitToSectionDelay: 1000,
+                    scrollBar: false,
+                    easing: 'easeInOutCubic',
+                    easingcss3: 'ease',
+                    loopBottom: false,
+                    loopTop: false,
+                    loopHorizontal: true,
+                    continuousVertical: false,
+                    continuousHorizontal: false,
+                    scrollHorizontally: false,
+                    interlockedSlides: false,
+                    dragAndMove: false,
+                    offsetSections: false,
+                    resetSliders: false,
+                    fadingEffect: false,
+                    normalScrollElements: '#element1, .element2',
+                    scrollOverflow: false,
+                    scrollOverflowReset: false,
+                    scrollOverflowOptions: null,
+                    touchSensitivity: 15,
+                    normalScrollElementTouchThreshold: 5,
+                    bigSectionsDestination: null,
+
+                    //Accessibility
+                    keyboardScrolling: true,
+                    animateAnchor: true,
+                    recordHistory: true,
+
+                    //Design
+                    controlArrows: true,
+                    verticalCentered: true,
+                    sectionsColor: [],
+                    paddingTop: '0',
+                    paddingBottom: '0',
+                    fixedElements: '#header, .footer',
+                    responsiveWidth: 0,
+                    responsiveHeight: 0,
+                    responsiveSlides: false,
+                    parallax: true,
+                    parallaxOptions: { type: 'cover', percentage: 40, property: 'translate' },
+
+                    //Custom selectors
+                    sectionSelector: '.section',
+                    slideSelector: '.slide',
+
+                    lazyLoading: true,
+
+                    //events
+                    onLeave: function (index, nextIndex, direction) { },
+                    afterLoad: function (anchorLink, index) { },
+                    afterRender: function () { },
+                    afterResize: function () { },
+                    afterResponsive: function (isResponsive) { },
+                    afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) { },
+                    onSlideLeave: function (anchorLink, index, slideIndex, direction, nextSlideIndex) { }
+                });
+
+                // 确保footer处于正确位置的额外代码
+                function adjustFooter() {
+                    // 强制设置footer宽度为窗口宽度
+                    $('.foot').css({
+                        'width': '100%',
+                        'left': '0',
+                        'right': '0'
+                    });
+                }
+
+                // 页面加载和窗口调整大小时调整footer
+                $(window).on('load resize', adjustFooter);
+                setTimeout(adjustFooter, 500); // 延迟执行以确保DOM完全加载
+            });
+
+            // Add this JavaScript code to the page to make the dropdown menus work
+
+            $(document).ready(function () {
+                // Toggle submenu visibility when main menu items are clicked
+                $('#menu .menu-category > a.main-link').on('click', function (e) {
+                    e.preventDefault(); // Prevent the default anchor behavior
+
+                    const $parent = $(this).parent('.menu-category');
+
+                    // If the clicked menu item is already active, just close it
+                    if ($parent.hasClass('active')) {
+                        $parent.removeClass('active');
+                        return;
+                    }
+
+                    // Close any open submenus
+                    $('#menu .menu-category.active').removeClass('active');
+
+                    // Open the clicked submenu
+                    $parent.addClass('active');
+                });
+
+                // Close submenu when clicking elsewhere on the page
+                $(document).on('click', function (e) {
+                    if (!$(e.target).closest('#menu').length) {
+                        $('#menu .menu-category.active').removeClass('active');
+                    }
+                });
+
+                // Handle submenu item clicks
+                $('#menu .submenu li a').on('click', function () {
+                    // Close the submenu after a submenu item is clicked
+                    $(this).closest('.menu-category').removeClass('active');
+                });
+            });
+
+
+
+        </script>
+
+</body>
+
+</html>

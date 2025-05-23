@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Canal Functional Transformation - Tourism</title>
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.0.1/maptiler-sdk.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            /* Ensure html and body take full height */
+            position: relative;
+            /* Establish positioning context for absolute children */
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            background-color: #f8f4e5;
+            color: #3c2b21;
+            overflow: hidden;
+            /* Hides body scrollbars, map will handle its own if needed */
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/png;base64,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');
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+
+        #console {
+            flex-direction: column;
+            justify-content: space-between;
+            /* 让内容在顶部和底部分布 */
+        }
+
+        /* Console Styles */
+        #console {
+            position: absolute;
+            top: 285px;
+            left: 640px;
+            width: 240px;
+            height: 305px;
+            background-color: rgba(248, 240, 227, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            padding: 16px;
+            overflow-y: auto;
+            overflow-x: auto;
+            z-index: 10;
+            border: 1px solid #d3b17d;
+            display: block;
+            /* Explicitly set display */
+        }
+
+        /* Scrollbar Styles */
+        #console::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #console::-webkit-scrollbar-track {
+            background: #f1e7d0;
+        }
+
+        #console::-webkit-scrollbar-thumb {
+            background-color: #d3b17d;
+            border-radius: 10px;
+        }
+
+        /* Province Selector */
+        .province-selector {
+            margin-bottom: 15px;
+        }
+
+        .province-selector h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+
+            color: #5a3b2c;
+        }
+
+        .province-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .province-item {
+            background-color: rgba(255, 253, 245, 0.8);
+            border: 1px solid #d3b17d;
+            padding: 5px 7px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 12px;
+        }
+
+        .province-item:hover,
+        .province-item.active {
+            background-color: #d3b17d;
+            color: #fff;
+        }
+
+        /* Legend Styles */
+        .legend {
+            margin-top: 0px;
+            padding-top: 7px;
+            border-top: 1px solid #d3b17d;
+        }
+
+        .legend h3 {
+            font-size: 14px;
+            color: #5a3b2c;
+            margin-bottom: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* 数据来源样式 */
+        #data-source-section {
+            flex-basis: auto;
+            flex-shrink: 0;
+            padding: 6px 2px;
+            font-size: 9px;
+            font-style: italic;
+            color: #777;
+            background-color: rgba(248, 244, 225, 0.2);
+            text-align: justify;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border-bottom: none;
+            margin-top: 0px;
+        }
+
+        #data-source-section a {
+            color: #777;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #data-source-section a:hover {
+            color: #CA9542;
+            text-decoration: underline;
+        }
+
+        /* Source Information */
+        .source {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #d3b17d;
+        }
+
+        .source h2 {
+            font-size: 14px;
+            color: #5a3b2c;
+            margin-bottom: 10px;
+        }
+
+        .source p {
+            font-size: 12px;
+            color: #6d5d4e;
+            line-height: 1.5;
+        }
+
+        .source a {
+            color: #8c3e2a;
+            text-decoration: none;
+        }
+
+        .source a:hover {
+            text-decoration: underline;
+        }
+
+        /* Map Popup Styles */
+        .maplibregl-popup {
+            max-width: 300px;
+        }
+
+        .maplibregl-popup-content {
+            background-color: #f8f0e3;
+            border: 1px solid #d3b17d;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+        }
+
+        .popup-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            color: #8c3e2a;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #d3b17d;
+        }
+
+        .popup-content {
+            font-size: 14px;
+            color: #3c2b21;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #console {
+                width: 300px;
+                height: auto;
+                min-height: 200px;
+                /* Added min-height as a safeguard */
+                max-height: calc(100vh - 40px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            #console {
+                width: calc(100% - 20px);
+                height: 40%;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                top: auto;
+                max-height: 40%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map-container">
+        <div id="map"></div>
+        <div class="map-overlay"></div>
+    </div>
+
+    <div id="console">
+        <div class="province-selector">
+            <h3>Provinces Along the Canal</h3>
+            <div class="province-list">
+                <div class="province-item" data-province="北京">Beijing</div>
+                <div class="province-item" data-province="天津">Tianjin</div>
+                <div class="province-item" data-province="河北">Hebei</div>
+                <div class="province-item" data-province="山东">Shandong</div>
+                <div class="province-item" data-province="江苏">Jiangsu</div>
+                <div class="province-item" data-province="浙江">Zhejiang</div>
+                <div class="province-item" data-province="安徽">Anhui</div>
+                <div class="province-item" data-province="河南">Henan</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>Legend</h3>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #3498db;"></div>
+                <span>Grand Canal Water System</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #e74c3c;"></div>
+                <span>Heritage Sites</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(128,128,128,0.3); border: 1px solid #606060;">
+                </div>
+                <span>Selected Province</span>
+            </div>
+        </div>
+
+        <!-- 添加数据来源部分 -->
+        <div class="source-section" id="data-source-section">
+            <p>Data Sources: <a
+                    href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E8%BF%90%E6%B2%B3%E6%96%87%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%8D%95%E4%BD%8D%E5%AD%90%E9%A1%B9%E5%88%97%E8%A1%A8#"
+                    target="_blank">List of Sub-items of Cultural Relics Protection Units Along the Grand Canal</a></p>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.0.1/maptiler-sdk.umd.min.js"></script>
+
+    <script>
+        // !!!!! IMPORTANT: Replace 'YOUR_MAPTILER_API_KEY' with your actual MapTiler API key !!!!!
+        maptilersdk.config.apiKey = 'YOUR_MAPTILER_API_KEY'; // Replace with your key
+
+        const map = new maptilersdk.Map({
+            container: 'map',
+            // Ensure the key in this style URL is also valid and authorized for your use
+            style: 'https://api.maptiler.com/maps/0196a47b-9a4a-7581-85b3-4ad07e239d9a/style.json?key=y9ojKtjS4KN4UaiG5YUB', // Replace with your style URL or key
+            center: [119, 33],
+            zoom: 6,
+            minZoom: 3
+        });
+
+        function simulateCanalData() {
+            const canalCoordinates = [
+                [116.4074, 39.9042], [117.2010, 39.0842], [116.8452, 38.3037],
+                [117.7336, 34.5623], [119.4321, 32.3924], [120.6288, 31.3133],
+                [120.1551, 30.2741]
+            ];
+            return {
+                type: 'FeatureCollection',
+                features: [{
+                    type: 'Feature',
+                    properties: { name: 'Grand Canal (Simulated)', description: 'Simulated canal data' },
+                    geometry: { type: 'LineString', coordinates: canalCoordinates }
+                }]
+            };
+        }
+
+        function addCanalLayer(data) {
+            if (map.getSource('canal-source')) {
+                map.getSource('canal-source').setData(data);
+            } else {
+                map.addSource('canal-source', { type: 'geojson', data: data });
+                map.addLayer({
+                    id: 'canal-layer',
+                    type: 'line',
+                    source: 'canal-source',
+                    layout: { 'line-join': 'round', 'line-cap': 'round' },
+                    paint: { 'line-color': '#3498db', 'line-width': 4, 'line-opacity': 0.8 }
+                });
+            }
+        }
+
+        function addHeritagePoints() {
+            return fetch('yyddata/tourism.geojson') // Return the promise
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} for tourism.geojson`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!(data && data.features && data.features.length > 0 && data.features[0].properties && data.features[0].properties.hasOwnProperty('name'))) {
+                        console.warn('Tourism.geojson data might be missing or the first feature is missing a "name" property.');
+                    }
+
+                    if (map.getSource('heritage-source')) {
+                        map.getSource('heritage-source').setData(data);
+                    } else {
+                        map.addSource('heritage-source', { type: 'geojson', data: data });
+                    }
+
+                    if (!map.getLayer('heritage-layer')) {
+                        map.addLayer({
+                            id: 'heritage-layer',
+                            type: 'circle',
+                            source: 'heritage-source',
+                            paint: {
+                                'circle-radius': 8,
+                                'circle-color': '#e74c3c',
+                                'circle-opacity': 0.8,
+                                'circle-stroke-width': 1,
+                                'circle-stroke-color': '#ffffff'
+                            }
+                        });
+                    }
+
+                    if (!map.getLayer('heritage-labels')) {
+                        map.addLayer({
+                            id: 'heritage-labels',
+                            type: 'symbol',
+                            source: 'heritage-source',
+                            layout: {
+                                'text-field': ['get', 'name'],
+                                'text-font': ['Noto Sans Regular', 'Arial Unicode MS Regular'],
+                                'text-offset': [0, 1.5],
+                                'text-anchor': 'top',
+                                'text-size': 12
+                            },
+                            paint: {
+                                'text-color': '#3c2b21',
+                                'text-halo-color': '#f8f4e5',
+                                'text-halo-width': 1.5
+                            }
+                        });
+                    }
+
+                    map.on('click', 'heritage-layer', function (e) {
+                        if (e.features && e.features.length > 0) {
+                            const coordinates = e.features[0].geometry.coordinates.slice();
+                            const properties = e.features[0].properties;
+
+                            let popupHTML = `<div class="popup-title">${properties.name || 'Heritage Site'}</div>`;
+                            popupHTML += `<div class="popup-content">`;
+                            if (properties.description) {
+                                popupHTML += `<p>${properties.description}</p>`;
+                            } else {
+                                popupHTML += `<p>No detailed description available.</p>`;
+                            }
+                            popupHTML += `</div>`;
+
+                            new maptilersdk.Popup()
+                                .setLngLat(coordinates)
+                                .setHTML(popupHTML)
+                                .addTo(map);
+                        }
+                    });
+
+                    map.on('mouseenter', 'heritage-layer', () => map.getCanvas().style.cursor = 'pointer');
+                    map.on('mouseleave', 'heritage-layer', () => map.getCanvas().style.cursor = '');
+                })
+                .catch(error => {
+                    console.error('Error loading heritage points data:', error);
+                    // Consider if alert is needed here or if console error is enough
+                    // alert('Could not load heritage points data. Check yyddata/tourism.geojson path and content.');
+                    throw error; // Re-throw for Promise.allSettled to see it as rejected
+                });
+        }
+
+        map.on('load', function () {
+            const initialLoadPromises = [];
+
+            initialLoadPromises.push(
+                fetch('yyddata/china_canal.geojson')
+                    .then(response => {
+                        if (!response.ok) {
+                            console.warn('Could not load china_canal.geojson, using simulation.');
+                            return simulateCanalData();
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        addCanalLayer(data);
+                    })
+                    .catch(error => {
+                        console.error('Error loading Grand Canal data:', error);
+                        const mockData = simulateCanalData();
+                        addCanalLayer(mockData);
+                    })
+            );
+
+            initialLoadPromises.push(addHeritagePoints());
+
+            Promise.allSettled(initialLoadPromises).finally(() => {
+                const beijingProvinceItem = document.querySelector('.province-item[data-province="北京"]');
+                if (beijingProvinceItem) {
+                    console.log("Simulating click on Beijing province item on page load.");
+                    beijingProvinceItem.click();
+                } else {
+                    console.warn("Beijing province item not found for initial click.");
+                }
+            });
+        });
+
+        document.querySelectorAll('.province-item').forEach(item => {
+            item.addEventListener('click', function () {
+                const provinceDataName = this.getAttribute('data-province');
+                const provinceDisplayName = this.textContent;
+
+                document.querySelectorAll('.province-item').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+
+                if (map.getLayer('province-highlight')) map.removeLayer('province-highlight');
+                if (map.getSource('province-highlight-source')) map.removeSource('province-highlight-source');
+
+                let center, zoom, geojsonFile;
+
+                switch (provinceDataName) {
+                    case '北京':
+                        center = [116.9074, 40.2]; zoom = 7.5; geojsonFile = 'yyddata/bj.json';
+                        break;
+                    case '天津':
+                        center = [117.7010, 39.42]; zoom = 7.6; geojsonFile = 'yyddata/tianjin.json';
+                        break;
+                    case '河北':
+                        center = [117.38, 39.3]; zoom = 5.6; geojsonFile = 'yyddata/hebei.json';
+                        break;
+                    case '山东':
+                        center = [119.073, 36]; zoom = 6.1; geojsonFile = 'yyddata/shandong.json';
+                        break;
+                    case '江苏':
+                        center = [120.20, 33.00]; zoom = 6.1; geojsonFile = 'yyddata/jiangsu.json';
+                        break;
+                    case '浙江':
+                        center = [121.00, 29.20]; zoom = 6.4; geojsonFile = 'yyddata/zhejiang.json';
+                        break;
+                    case '安徽':
+                        center = [119.0, 32]; zoom = 6; geojsonFile = 'yyddata/anhui.json';
+                        break;
+                    case '河南':
+                        center = [114.500, 33.000]; zoom = 6.1; geojsonFile = 'yyddata/henan.json';
+                        break;
+                    default:
+                        map.flyTo({ center: [119, 33], zoom: 6 });
+                        return;
+                }
+
+                if (center && zoom) map.flyTo({ center: center, zoom: zoom });
+                if (geojsonFile) loadProvinceShape(geojsonFile, provinceDisplayName);
+            });
+        });
+
+        function loadProvinceShape(filename, provinceDisplayNameForAlert) {
+            fetch(filename)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} for ${filename}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (map.getSource('province-highlight-source')) {
+                        if (map.getLayer('province-highlight')) {
+                            map.removeLayer('province-highlight');
+                        }
+                        map.removeSource('province-highlight-source');
+                    }
+
+                    map.addSource('province-highlight-source', {
+                        'type': 'geojson',
+                        'data': data
+                    });
+
+                    map.addLayer({
+                        'id': 'province-highlight',
+                        'type': 'fill',
+                        'source': 'province-highlight-source',
+                        'paint': {
+                            'fill-color': '#808080',
+                            'fill-opacity': 0.3,
+                            'fill-outline-color': '#606060'
+                        }
+                    }, 'heritage-layer'); // Try to draw province highlight below heritage sites if heritage-layer exists
+                })
+                .catch(error => {
+                    console.error(`Error loading province data for ${provinceDisplayNameForAlert} from ${filename}:`, error);
+                    alert(`Could not load geographic data for ${provinceDisplayNameForAlert} (${filename}).\nPlease ensure the file exists at ${filename} and is correctly formatted.`);
+                    if (map.getLayer('province-highlight')) map.removeLayer('province-highlight');
+                    if (map.getSource('province-highlight-source')) map.removeSource('province-highlight-source');
+                });
+        }
+    </script>
+</body>
+
+</html>

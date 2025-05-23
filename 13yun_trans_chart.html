@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Waterway Meets Modern Transport</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .transition-container {
+            width: 100%;
+            height: 100vh;
+            background-image: url('yydimages/13bg.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0.3)70%);
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-box {
+            width: 50%;
+            max-width: 600px;
+            padding: 60px;
+            margin-left: 10%;
+        }
+
+        .chart-box {
+            position: absolute;
+            width: 38%;
+            height: 45%;
+            /* 增加高度以容纳数据来源 */
+            right: 10%;
+            top: 320px;
+            /* 稍微向上调整 */
+            max-width: 650px;
+            padding: 10px;
+            background: rgba(252, 250, 250, 0.6);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            /* 改为垂直布局 */
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+
+        /* Vertical divider line between text and chart */
+        .vertical-divider {
+            position: absolute;
+            top: 65%;
+            left: 49%;
+            transform: translateY(-50%);
+            height: 50%;
+            width: 1.5px;
+            background: linear-gradient(to bottom, transparent, rgba(202, 149, 66, 0.7) 20%, rgba(202, 149, 66, 0.7) 80%, transparent);
+            z-index: 3;
+        }
+
+        .title-section {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .title-line {
+            width: 80px;
+            height: 3px;
+            background-color: #CA9542;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            color: #222;
+        }
+
+        .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #CA9542;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .content-text p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #333;
+            opacity: 0;
+        }
+
+        .content-text p:nth-child(1) {
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+
+        .content-text p:nth-child(2) {
+            animation: fadeIn 1s ease-out 0.6s forwards;
+        }
+
+        .content-text p:nth-child(3) {
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+
+        .highlight {
+            color: #CA9542;
+            font-weight: 400;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 10%;
+            margin-left: 60px;
+            display: flex;
+            align-items: center;
+            animation: fadeInOut 2s infinite 1.2s;
+            opacity: 0;
+        }
+
+        .scroll-indicator p {
+            margin-right: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9em;
+            color: #444;
+        }
+
+        .scroll-arrow {
+            width: 35px;
+            height: 35px;
+            border: 2px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+        }
+
+        .chart-container {
+            width: 100%;
+            flex: 1;
+            /* 占据剩余空间 */
+        }
+
+        /* 数据来源样式 */
+        #data-source-section {
+            flex-basis: auto;
+            flex-shrink: 0;
+            padding: 4px 8px;
+            font-size: 9px;
+            font-style: italic;
+            color: #777;
+            background-color: rgba(248, 244, 225, 0.2);
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: none;
+            margin-top: 6px;
+        }
+
+        #data-source-section a {
+            color: #777;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #data-source-section a:hover {
+            color: #CA9542;
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInOut {
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                position: relative;
+            }
+
+            .content-box {
+                width: 50%;
+                max-width: 400px;
+                margin-left: 10%;
+                padding: 60px;
+            }
+
+            .vertical-divider {
+                left: 60%;
+                height: 50%;
+            }
+
+            .scroll-indicator {
+                margin-left: 60px;
+                left: 10%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                justify-content: center;
+                overflow-y: auto;
+                height: auto;
+                padding: 40px 0;
+            }
+
+            .content-box {
+                width: 90%;
+                margin: 0 auto 40px;
+                padding: 30px;
+            }
+
+            .chart-box {
+                position: relative;
+                width: 90%;
+                height: 450px;
+                /* 增加移动端高度 */
+                margin: 0 auto;
+                right: auto;
+                top: auto;
+            }
+
+            .vertical-divider {
+                display: none;
+                /* Hide vertical divider on mobile */
+            }
+
+            h2 {
+                font-size: 2.5em;
+            }
+
+            .overlay {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.75) 100%);
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            body {
+                height: auto;
+                overflow-y: auto;
+            }
+
+            .transition-container {
+                height: auto;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transition-container">
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-box">
+                <div class="title-section">
+                    <div class="title-line"></div>
+                    <h2>The Grand Canal Reborn</h2>
+                    <div class="subtitle">From Freight Artery to Cultural Tourism Corridor</div>
+                </div>
+
+                <div class="content-text">
+                   <p>
+                        The Grand Canal once carried <span class="highlight">70% of China's north-south freight</span>,
+                        serving as the empire's economic backbone for centuries.
+                    </p>
+                    <p>
+                        By 1906, the <span class="highlight">Beijing-Hankou Railway</span> already transported four
+                        times the canal's peak volume, clearly signaling <span class="highlight">the decline of traditional waterborne trade</span> and <span class="highlight">the dawn of a new era of rail-based transportation</span> in China.
+                    </p>
+                    <p>
+                        Today, railway freight is <span class="highlight">60 times</span> and road freight <span
+                            class="highlight">390 times</span> that of the canal. Yet in water-rich regions, the Grand
+                        Canal still offers unique <span class="highlight">economic and environmental benefits</span>.
+                    </p>
+                </div>
+
+                <div class="scroll-indicator">
+                    <p>Scroll down</p>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+
+            <!-- Vertical divider between text and chart -->
+            <div class="vertical-divider"></div>
+
+            <div class="chart-box">
+                <div class="chart-container">
+                    <canvas id="freightChart"></canvas>
+                </div>
+                <!-- 添加数据来源部分 -->
+                <div id="data-source-section">
+                    Data Sources: <a href="https://www.stats.gov.cn/" target="_blank">National Bureau of Statistics of
+                        China</a>, <a href="https://www.china-railway.com.cn/" target="_blank">China Railway
+                        Corporation</a>, <a href="https://www.mot.gov.cn/" target="_blank">Ministry of Transport</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const years = [1500, 1800, 1900, 1950, 1980, 2000, 2020, 2023];
+        const canalData = [24000, 18000, 1000, 500, 20000, 30000, 65000, 80000];
+        const railData = [null, null, 100, 10000, 110000, 180000, 450000, 490000];
+        const roadData = [null, null, null, 10000, 300000, 1000000, 3400000, 3900000].map(x => x === null ? null : x / 10000);
+
+        const ctx = document.getElementById('freightChart').getContext('2d');
+        const freightChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'Grand Canal (10k tons)',
+                        data: canalData,
+                        borderColor: '#3e7b91',
+                        backgroundColor: 'rgba(62, 123, 145, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.3,
+                        yAxisID: 'y',
+                        spanGaps: true
+                    },
+                    {
+                        label: 'Railway (10k tons)',
+                        data: railData,
+                        borderColor: '#8b4513',
+                        backgroundColor: 'rgba(139, 69, 19, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.3,
+                        yAxisID: 'y',
+                        spanGaps: true
+                    },
+                    {
+                        label: 'Road (100m tons)',
+                        data: roadData,
+                        borderColor: '#a17666',
+                        backgroundColor: 'rgba(161, 118, 102, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.3,
+                        yAxisID: 'y1',
+                        spanGaps: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Historical Comparison of Grand Canal, Rail, and Road Freight (1500-2023)',
+                        font: {
+                            family: "Lato",
+                            size: 13,
+                            weight: '300'
+                        },
+                        color: '#3c2a1e',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let label = context.dataset.label || '';
+                                if (context.parsed.y === null) {
+                                    return label + ': N/A';
+                                }
+                                if (label.includes('Road (100m tons)')) {
+                                    return label + ': ' + context.parsed.y.toFixed(1) + ' hundred million tons';
+                                } else {
+                                    return label + ': ' + context.parsed.y.toLocaleString() + ' (10k tons)';
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            font: {
+                                family: "'Lato', sans-serif",
+                                size: 12,
+                                weight: '300'
+                            },
+                            color: '#3c2a1e',
+                            filter: function (item) {
+                                return !item.text.includes('N/A');
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year',
+                            font: {
+                                family: "'Lato', sans-serif",
+                                size: 13,
+                                weight: '300'
+                            },
+                            color: '#3c2a1e'
+                        },
+                        ticks: {
+                            font: {
+                                family: "'Lato', sans-serif",
+                                size: 11,
+                                weight: '300'
+                            },
+                            color: '#3c2a1e'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Grand Canal/Railway Freight (10k tons)',
+                            font: {
+                                family: "'Lato', sans-serif",
+                                size: 13,
+                                weight: '300'
+                            },
+                            color: '#3c2a1e'
+                        },
+                        ticks: {
+                            font: {
+                                family: "'Lato', sans-serif",
+                                size: 11,
+                                weight: '300'
+                            },
+                            color: '#3c2a1e',
+                            callback: function (value) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Road Freight (100m tons)',
+                            font: {
+                                family: "'Lato', sans-serif",
+                                size: 13,
+                                weight: '300'
+                            },
+                            color: '#3c2a1e'
+                        },
+                        ticks: {
+                            font: {
+                                family: "'Lato', sans-serif",
+                                size: 11,
+                                weight: '300'
+                            },
+                            color: '#3c2a1e'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加滚动监听，让时间线元素逐步出现
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            function checkIfInView() {
+                timelineItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                    
+                    if (rect.top <= windowHeight * 0.8) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkIfInView();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkIfInView);
+            
+            // 为滚动指示器添加点击事件
+            var scrollIndicator = document.querySelector('.scroll-indicator');
+            var scrollArrow = document.querySelector('.scroll-arrow');
+            
+            
+            // 如果找到了滚动箭头，单独为其添加点击事件
+            if (scrollArrow) {
+                scrollArrow.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // 尝试调用父窗口的 fullPage.js 方法
+                    if (window.parent && window.parent.$.fn && window.parent.$.fn.fullpage) {
+                        window.parent.$.fn.fullpage.moveTo('HeritagePage');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
